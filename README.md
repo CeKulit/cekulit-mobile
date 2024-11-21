@@ -4,7 +4,7 @@
   <img src="https://github.com/CeKulit/cekulit-assets/blob/main/assets/app/app_logo_hd.png" alt="CeKulit Logo" width="300"/>
   <p><i>AI-Powered Skin Analysis Mobile Application</i></p>
 
-  [![Android CI]([https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://github.com/CeKulit/cekulit-mobile/actions)
+  [![Android CI](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://github.com/CeKulit/cekulit-mobile/actions)
   [![Release](https://img.shields.io/github/v/release/CeKulit/cekulit-mobile)](https://github.com/CeKulit/cekulit-mobile/releases)
   [![API Level](https://img.shields.io/badge/API-24%2B-brightgreen.svg)](https://android-arsenal.com/api?level=24)
   [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
