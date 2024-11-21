@@ -1,7 +1,7 @@
 # CeKulit Mobile App
 
 <div align="center">
-  <img src="https://github.com/CeKulit/.github/blob/master/profile/assets/app_logo.png" alt="CeKulit Logo" />
+  <img src="https://github.com/CeKulit/cekulit-assets/blob/main/assets/app/app_logo_hd.png" alt="CeKulit Logo" width="300"/>
   <p><i>AI-Powered Skin Analysis Mobile Application</i></p>
 
   [![Android CI](https://github.com/CeKulit/cekulit-mobile/workflows/Android%20CI/badge.svg)](https://github.com/CeKulit/cekulit-mobile/actions)
