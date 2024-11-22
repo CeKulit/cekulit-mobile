@@ -181,9 +181,9 @@ app/
 
 ### Screenshots
 <div align="center">
-  <img src="/api/placeholder/200/400" alt="Home Screen" width="200"/>
+  <img src="https://github.com/CeKulit/.github/blob/master/profile/assets/homepage.png" alt="Home Screen" width="200"/>
   <img src="/api/placeholder/200/400" alt="Analysis Screen" width="200"/>
-  <img src="/api/placeholder/200/400" alt="Results Screen" width="200"/>
+  <img src="https://github.com/CeKulit/.github/blob/master/profile/assets/scan.png" alt="Results Screen" width="166"/>
   <img src="/api/placeholder/200/400" alt="Profile Screen" width="200"/>
 </div>
 
