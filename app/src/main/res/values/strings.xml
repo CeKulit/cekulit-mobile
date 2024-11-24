@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">CeKulit</string>
+    <string name="onboarding">Onboarding</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string name="title_menu_1">Selamat Datang di CeKulit</string>
+    <string name="title_menu_2">Scan Kulitmu dalam Sekejap</string>
+    <string name="title_menu_3">Temukan Rekomendasi Perawatan yang Tepat</string>
+    <string name="title_menu_4">Mulai Perjalanan Kulit Sehatmu!</string>
+
+    <string name="desc_menu_1">Kenali kondisi kulitmu dan dapatkan solusi terbaik untuk perawatannya.</string>
+    <string name="desc_menu_2">Deteksi masalah kulit hanya dengan satu kali scan.</string>
+    <string name="desc_menu_3">Temukan rutinitas skincare yang sesuai untuk kulitmu.</string>
+    <string name="desc_menu_4">Siap untuk tampil percaya diri? Yuk, mulai scan sekarang!</string>
+
+    <string name="btn_start">Mulai</string>
+    <string name="btn_login">Masuk</string>
+    <string name="btn_register">Daftar akun</string>
+    <string name="desc_auth">Cek kondisi kulitmu dan temukan langkah perawatannya di CeKulit</string>
+
+    
+    <string name="title_regist">Hai!</string>
+    <string name="title_sub_regist">Buat akun kamu dulu yuk</string>
+    <string name="desc_regist">Sudah punya akun? Masuk disini!</string>
+    <string name="title_login">Hai!</string>
+    <string name="title_sub_login">Masuk terlebih dahulu untuk melanjutkan</string>
+    <string name="desc_login">Belum punya akun? Daftar disini!</string>
+</resources>
