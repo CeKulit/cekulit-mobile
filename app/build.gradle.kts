@@ -35,14 +35,30 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 }
 
 dependencies {
 
+    //coroutine
+    implementation(libs.kotlinx.coroutines.android)
+
+    //fetch-api tools
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.logging.interceptor)
+
+
+
+    //dataStore
+    implementation(libs.androidx.datastore.preferences)
+
     //splash-screen
     implementation(libs.androidx.core.splashscreen)
 
+    //lifecycle viewModel
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

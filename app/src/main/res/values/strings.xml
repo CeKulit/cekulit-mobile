@@ -17,14 +17,27 @@
 
     <string name="btn_start">Mulai</string>
     <string name="btn_login">Masuk</string>
-    <string name="btn_register">Daftar akun</string>
+    <string name="btn_signup_acc">Daftar akun</string>
+    <string name="btn_signup">Daftar</string>
     <string name="desc_auth">Cek kondisi kulitmu dan temukan langkah perawatannya di CeKulit</string>
 
-    
-    <string name="title_regist">Hai!</string>
-    <string name="title_sub_regist">Buat akun kamu dulu yuk</string>
-    <string name="desc_regist">Sudah punya akun? Masuk disini!</string>
+
+    <string name="title_signup">Hai!</string>
+    <string name="title_sub_signup">Buat akun kamu dulu yuk</string>
+    <string name="desc_signup">Sudah punya akun? </string>
+    <string name="desc_signup_here"><u>Masuk disini!</u></string>
+    <string name="tv_terms_condition">Setuju dengan</string>
+    <string name="tv_terms_condition_redirect"><u>Syarat &amp; Ketentuan</u></string>
+
+    <string name="tv_name">Nama</string>
+    <string name="tv_email">Email</string>
+    <string name="tv_password">Password</string>
+
     <string name="title_login">Hai!</string>
     <string name="title_sub_login">Masuk terlebih dahulu untuk melanjutkan</string>
-    <string name="desc_login">Belum punya akun? Daftar disini!</string>
+    <string name="desc_login">Belum punya akun? </string>
+    <string name="desc_login_here"><u>Daftar disini!</u></string>
+    <string name="tv_forgot_password"><u>Lupa password?</u></string>
+    <string name="tv_login_option">atau masuk dengan</string>
+
 </resources>
