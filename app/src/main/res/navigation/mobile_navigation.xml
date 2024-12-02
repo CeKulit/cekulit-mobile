@@ -8,18 +8,18 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.dicoding.cekulit.ui.home.HomeFragment"
-        android:label="@string/title_home"
+        android:label="@string/nav_title_home"
         tools:layout="@layout/fragment_home" />
 
-    <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.dicoding.cekulit.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+    <activity
+        android:id="@+id/navigation_scan"
+        android:name="com.dicoding.cekulit.ui.camera.CameraActivity"
+        android:label="@string/nav_title_scan"
+        tools:layout="@layout/activity_camera" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.dicoding.cekulit.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_profile"
+        android:name="com.dicoding.cekulit.ui.profile.ProfileFragment"
+        android:label="@string/nav_title_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>

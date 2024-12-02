@@ -5,16 +5,28 @@ import android.os.Build
 import android.os.Bundle
 import android.view.WindowInsets
 import android.view.WindowManager
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.dicoding.cekulit.MainActivity
 import com.dicoding.cekulit.R
 import com.dicoding.cekulit.databinding.ActivityOnBoardingBinding
+import com.dicoding.cekulit.ui.ViewModelFactory
 import com.dicoding.cekulit.ui.auth.login.LoginActivity
+import com.dicoding.cekulit.ui.auth.login.LoginViewModel
 import com.dicoding.cekulit.ui.auth.signup.SignupActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class OnBoardingActivity : AppCompatActivity() {
+    private val loginViewModel by viewModels<LoginViewModel> {
+        ViewModelFactory.getInstance(this)
+    }
 
     private lateinit var binding: ActivityOnBoardingBinding
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,6 +34,7 @@ class OnBoardingActivity : AppCompatActivity() {
         binding = ActivityOnBoardingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        auth = Firebase.auth
         setupView()
 
         binding.btnLogin.setOnClickListener {
@@ -51,5 +64,20 @@ class OnBoardingActivity : AppCompatActivity() {
             )
         }
         supportActionBar?.hide()
+    }
+
+    private fun updateUI(currentUser: FirebaseUser?) {
+        loginViewModel.authToken.observe(this){ token ->
+            if(token.isNotEmpty() || currentUser != null){
+                startActivity(Intent(this@OnBoardingActivity, MainActivity::class.java))
+                finish()
+            }
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val currentUser = auth.currentUser
+        updateUI(currentUser)
     }
 }

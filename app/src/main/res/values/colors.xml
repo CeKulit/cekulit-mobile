@@ -2,6 +2,7 @@
 <resources>
     <color name="pink">#C9184A</color>
     <color name="pink_splash">#FFB3C1</color>
+    <color name="pinky">#FFD1DA</color>
     <color name="gray">#F6F6F6</color>
     <color name="black">#404040</color>
     <color name="white">#FFFFFF</color>

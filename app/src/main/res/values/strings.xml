@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">CeKulit</string>
     <string name="onboarding">Onboarding</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="nav_title_home">Home</string>
+    <string name="nav_title_scan">Scan</string>
+    <string name="nav_title_profile">Profile</string>
 
     <string name="title_menu_1">Selamat Datang di CeKulit</string>
     <string name="title_menu_2">Scan Kulitmu dalam Sekejap</string>
@@ -39,5 +39,17 @@
     <string name="desc_login_here"><u>Daftar disini!</u></string>
     <string name="tv_forgot_password"><u>Lupa password?</u></string>
     <string name="tv_login_option">atau masuk dengan</string>
+
+    <string name="tv_result">Hasil</string>
+    <string name="tv_skin_type">Tipe Kulit</string>
+    <string name="tv_skin_care">Bahan Skincare</string>
+    <string name="tv_oil_type">Beryinyak</string>
+    <string name="tv_ingredient_skin_care">Salicylic Acid, Glycolic Acid, Niacinamide</string>
+    <string name="tv_title_overview">Overview</string>
+    <string name="tv_title_sub_overview">your skin type is classified as oily. Oily skin is characterized by an overproduction of sebum (natural skin oil), which may cause a shiny or greasy appearance, particularly on the T-zone (forehead, nose, and chin). </string>
+    <string name="tv_morning_skincare">Skincare Pagi</string>
+    <string name="tv_night_skincare">Skincare Malam</string>
+    <string name="btn_search_redirect">Search in Tokopedia</string>
+    <string name="web_client_id">543819931677-6j5jtdkrpnud5k2eaohtcn04eter2q7i.apps.googleusercontent.com</string>
 
 </resources>
