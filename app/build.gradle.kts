@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.dicoding.cekulit"
+    namespace = "com.bangkit.cekulit"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.dicoding.cekulit"
+        applicationId = "com.bangkit.cekulit"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

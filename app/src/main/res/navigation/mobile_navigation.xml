@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.dicoding.cekulit.ui.home.HomeFragment"
+        android:name="com.bangkit.cekulit.ui.home.HomeFragment"
         android:label="@string/nav_title_home"
         tools:layout="@layout/fragment_home" />
 
     <activity
         android:id="@+id/navigation_scan"
-        android:name="com.dicoding.cekulit.ui.camera.CameraActivity"
+        android:name="com.bangkit.cekulit.ui.camera.CameraActivity"
         android:label="@string/nav_title_scan"
         tools:layout="@layout/activity_camera" />
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.dicoding.cekulit.ui.profile.ProfileFragment"
+        android:name="com.bangkit.cekulit.ui.profile.ProfileFragment"
         android:label="@string/nav_title_profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>

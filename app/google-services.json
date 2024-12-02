@@ -1,41 +1,41 @@
 {
   "project_info": {
-    "project_number": "543819931677",
-    "project_id": "cekulit-capstone-bangkit",
-    "storage_bucket": "cekulit-capstone-bangkit.firebasestorage.app"
+    "project_number": "575073258145",
+    "project_id": "capstone-bangkit-cekulit",
+    "storage_bucket": "capstone-bangkit-cekulit.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:543819931677:android:19b0dfdc0c1b1663be26f4",
+        "mobilesdk_app_id": "1:575073258145:android:5d3fe800d928bfcfeffee0",
         "android_client_info": {
-          "package_name": "com.dicoding.cekulit"
+          "package_name": "com.bangkit.cekulit"
         }
       },
       "oauth_client": [
         {
-          "client_id": "543819931677-jg70m2ouj1jdp738o941nnbhu7bs5v0n.apps.googleusercontent.com",
+          "client_id": "575073258145-v2ip8rpo64dbmplsk2s686so7hsfeual.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.dicoding.cekulit",
+            "package_name": "com.bangkit.cekulit",
             "certificate_hash": "7bf15dcbbbbbc72200b4345951ec89d4ce0c8884"
           }
         },
         {
-          "client_id": "543819931677-6j5jtdkrpnud5k2eaohtcn04eter2q7i.apps.googleusercontent.com",
+          "client_id": "575073258145-5bsh1nqjmgjisg88v0jkgf46nn2l47bp.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyATzohXQb_VxCwZALOgN1C-J8Ax07GnxNs"
+          "current_key": "AIzaSyDOQvRe42zFXwdEZqo3cavSim8TM96bihA"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "543819931677-6j5jtdkrpnud5k2eaohtcn04eter2q7i.apps.googleusercontent.com",
+              "client_id": "575073258145-5bsh1nqjmgjisg88v0jkgf46nn2l47bp.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
