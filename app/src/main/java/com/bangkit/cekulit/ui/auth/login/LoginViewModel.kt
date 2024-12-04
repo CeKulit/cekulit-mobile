@@ -7,7 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import com.bangkit.cekulit.data.remote.AuthRepository
+import com.bangkit.cekulit.data.AuthRepository
 import com.bangkit.cekulit.data.remote.retrofit.ApiConfig
 import com.bangkit.cekulit.data.remote.retrofit.response.LoginResult
 import com.bangkit.cekulit.data.remote.retrofit.response.MessageResponse

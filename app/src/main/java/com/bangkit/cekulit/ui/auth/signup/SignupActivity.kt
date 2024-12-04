@@ -18,7 +18,6 @@ class SignupActivity : AppCompatActivity() {
         setContentView(binding.root)
         setupAction()
         setupSignupObserver()
-        supportActionBar?.hide()
 
 
 

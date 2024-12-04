@@ -1,9 +1,13 @@
 <resources>
     <string name="app_name">CeKulit</string>
     <string name="onboarding">Onboarding</string>
-    <string name="nav_title_home">Home</string>
+    <string name="nav_title_home">Beranda</string>
     <string name="nav_title_scan">Scan</string>
-    <string name="nav_title_profile">Profile</string>
+    <string name="nav_title_profile">Profil</string>
+    <string name="nav_title_favorite">Favorit</string>
+    <string name="nav_title_history">Riwayat</string>
+    <string name="nav_title_setting">Pengaturan</string>
+    <string name="tv_username">Alvano Hastagina</string>
 
     <string name="title_menu_1">Selamat Datang di CeKulit</string>
     <string name="title_menu_2">Scan Kulitmu dalam Sekejap</string>
@@ -50,6 +54,21 @@
     <string name="tv_morning_skincare">Skincare Pagi</string>
     <string name="tv_night_skincare">Skincare Malam</string>
     <string name="btn_search_redirect">Search in Tokopedia</string>
+
+    <string name="send_success">Berhasil terkirim</string>
+    <string name="send_error">Gagal terkirim</string>
     <string name="web_client_id">575073258145-5bsh1nqjmgjisg88v0jkgf46nn2l47bp.apps.googleusercontent.com</string>
+
+    <string name="tv_help">Dukungan &amp; dan Bantuan</string>
+    <string name="tv_forget_password">Lupa Password</string>
+    <string name="tv_logout">Keluar</string>
+
+    <string name="tv_title_help">Kami di CeKulit siap membantu Anda dengan segala hal yang Anda butuhkan terkait aplikasi ini.</string>
+    <string name="tv_title_sub_help">Di CeKulit, tujuan kami sederhana: membantu Anda merasa lebih percaya diri dan mendapatkan informasi yang lebih baik tentang kesehatan kulit Anda setiap hari. Kami hadir untuk Anda. Bagikan kekhawatiran Anda atau jelajahi pertanyaan yang sering diajukan di bawah ini.</string>
+    <string name="tv_title_faq">FAQ</string>
+    <string name="tv_title_faq_1">Apa itu CeKulit?</string>
+    <string name="tv_title_sub_faq_1">CeKulit adalah aplikasi bertema kesehatan kulit yang dirancang untuk membantu pengguna memahami kondisi kulit mereka dengan lebih mudah. Aplikasi ini memanfaatkan teknologi image classification untuk menganalisis foto kulit pengguna dan mendeteksi apakah kulit tersebut berminyak, kering, atau normal.</string>
+    <string name="tv_title_faq_2">Bagaimana cara memindai kulit dengan aplikasi CeKulit?</string>
+    <string name="tv_title_faq_3">Apakah CeKulit memberikan rekomendasi skincare rutin?</string>
 
 </resources>

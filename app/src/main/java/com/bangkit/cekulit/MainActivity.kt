@@ -34,14 +34,13 @@ class MainActivity : AppCompatActivity() {
         auth = Firebase.auth
         val firebaseUser = auth.currentUser
 
+
         loginViewModel.authToken.observe(this){ token ->
             if (firebaseUser == null && token.isNullOrEmpty()) {
                 startActivity(Intent(this, LoginActivity::class.java))
                 finish()
             }
         }
-
-
 
         val navView: BottomNavigationView = binding.navView
 
@@ -50,10 +49,10 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_scan, R.id.navigation_profile
+                R.id.navigation_home, R.id.navigation_scan, R.id.navigation_setting
             )
         )
-        setupActionBarWithNavController(navController, appBarConfiguration)
+//        setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
 

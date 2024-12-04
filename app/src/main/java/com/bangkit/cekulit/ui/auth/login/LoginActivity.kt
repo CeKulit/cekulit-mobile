@@ -44,7 +44,6 @@ class LoginActivity : AppCompatActivity() {
 
         setupAction()
         setupLoginObserver()
-        supportActionBar?.hide()
 
         auth = Firebase.auth
 
@@ -57,7 +56,6 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.ivIcGoogle.setOnClickListener {
-            Log.d(TAG, "CLICKEEEDDD")
             signIn()
         }
     }

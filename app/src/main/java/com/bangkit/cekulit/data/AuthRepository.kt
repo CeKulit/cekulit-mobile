@@ -1,4 +1,4 @@
-package com.bangkit.cekulit.data.remote
+package com.bangkit.cekulit.data
 
 import com.bangkit.cekulit.data.pref.UserPreference
 import kotlinx.coroutines.flow.Flow

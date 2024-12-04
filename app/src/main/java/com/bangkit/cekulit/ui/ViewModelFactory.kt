@@ -3,11 +3,12 @@ package com.bangkit.cekulit.ui
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.bangkit.cekulit.data.remote.AuthRepository
+import com.bangkit.cekulit.data.AuthRepository
 import com.bangkit.cekulit.di.Injection
 import com.bangkit.cekulit.ui.auth.login.LoginViewModel
+import com.bangkit.cekulit.ui.setting.SettingViewModel
 
-class ViewModelFactory(private val repository: AuthRepository) : ViewModelProvider.NewInstanceFactory() {
+class ViewModelFactory(private val authRepository: AuthRepository) : ViewModelProvider.NewInstanceFactory() {
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
@@ -16,7 +17,10 @@ class ViewModelFactory(private val repository: AuthRepository) : ViewModelProvid
 //                MainViewModel(repository) as T
 //            }
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
-                LoginViewModel(repository) as T
+                LoginViewModel(authRepository) as T
+            }
+            modelClass.isAssignableFrom(SettingViewModel::class.java) -> {
+                SettingViewModel(authRepository) as T
             }
 //            modelClass.isAssignableFrom(DetailViewModel::class.java) -> {
 //                DetailViewModel(repository) as T

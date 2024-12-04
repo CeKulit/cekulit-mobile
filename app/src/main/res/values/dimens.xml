@@ -5,4 +5,6 @@
 
     <dimen name="title_menu">28sp</dimen>
     <dimen name="desc_menu">18sp</dimen>
+
+    <dimen name="root_layout_padding_horizontal">32dp</dimen>
 </resources>

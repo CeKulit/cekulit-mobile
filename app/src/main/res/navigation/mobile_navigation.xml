@@ -11,15 +11,24 @@
         android:label="@string/nav_title_home"
         tools:layout="@layout/fragment_home" />
 
-    <activity
-        android:id="@+id/navigation_scan"
-        android:name="com.bangkit.cekulit.ui.camera.CameraActivity"
-        android:label="@string/nav_title_scan"
-        tools:layout="@layout/activity_camera" />
+    <fragment
+        android:id="@+id/navigation_favorite"
+        android:name="com.bangkit.cekulit.ui.favorite.FavoriteFragment"
+        android:label="@string/nav_title_favorite"
+        tools:layout="@layout/fragment_favorite"
+        />
 
     <fragment
-        android:id="@+id/navigation_profile"
-        android:name="com.bangkit.cekulit.ui.profile.ProfileFragment"
-        android:label="@string/nav_title_profile"
-        tools:layout="@layout/fragment_profile" />
+        android:id="@+id/navigation_history"
+        android:name="com.bangkit.cekulit.ui.history.HistoryFragment"
+        android:label="@string/nav_title_history"
+        tools:layout="@layout/fragment_history"
+        />
+
+
+    <fragment
+        android:id="@+id/navigation_setting"
+        android:name="com.bangkit.cekulit.ui.setting.SettingFragment"
+        android:label="@string/nav_title_setting"
+        tools:layout="@layout/fragment_setting" />
 </navigation>
