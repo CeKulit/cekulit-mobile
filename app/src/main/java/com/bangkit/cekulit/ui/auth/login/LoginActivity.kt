@@ -3,6 +3,7 @@ package com.bangkit.cekulit.ui.auth.login
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -16,6 +17,7 @@ import com.bangkit.cekulit.MainActivity
 import com.bangkit.cekulit.R
 import com.bangkit.cekulit.databinding.ActivityLoginBinding
 import com.bangkit.cekulit.ui.ViewModelFactory
+import com.bangkit.cekulit.ui.auth.reset.ForgetPasswordActivity
 import com.bangkit.cekulit.ui.auth.signup.SignupActivity
 import com.google.android.libraries.identity.googleid.GetGoogleIdOption
 import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
@@ -58,6 +60,10 @@ class LoginActivity : AppCompatActivity() {
         binding.ivIcGoogle.setOnClickListener {
             signIn()
         }
+
+        binding.tvForgotPassword.setOnClickListener {
+            startActivity(Intent(this@LoginActivity, ForgetPasswordActivity::class.java))
+        }
     }
 
 
@@ -84,9 +90,9 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-//    private fun showLoading(isLoading: Boolean){
-//        if(isLoading) binding.progressBar.visibility = View.VISIBLE else binding.progressBar.visibility = View.GONE
-//    }
+    private fun showLoading(isLoading: Boolean){
+        if(isLoading) binding.progressIndicator.visibility = View.VISIBLE else binding.progressIndicator.visibility = View.GONE
+    }
 
     private fun showButton(isEnabled: Boolean){
         binding.btnLogin.isEnabled = !isEnabled
@@ -94,7 +100,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun setupLoginObserver(){
         loginViewModel.isLoading.observe(this){
-//            showLoading(it)
+            showLoading(it)
             showButton(it)
         }
 

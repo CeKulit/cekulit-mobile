@@ -20,9 +20,9 @@
         android:layout_height="wrap_content"
         app:fabAlignmentMode="center"
         app:fabAnchorMode="cradle"
-        app:fabCradleMargin="20dp"
-        app:fabCradleVerticalOffset="4dp"
-        app:fabCradleRoundedCornerRadius="12dp"
+        app:fabCradleMargin="12dp"
+        app:fabCradleVerticalOffset="8dp"
+        app:fabCradleRoundedCornerRadius="16dp"
         android:layout_gravity="bottom">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView

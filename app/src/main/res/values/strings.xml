@@ -30,11 +30,14 @@
     <string name="title_sub_signup">Buat akun kamu dulu yuk</string>
     <string name="desc_signup">Sudah punya akun? </string>
     <string name="desc_signup_here"><u>Masuk disini!</u></string>
+    <string name="tv_title_terms_condition">Syarat &amp; Ketentuan</string>
+    <string name="tv_title_sub_terms_condition">Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet </string>
     <string name="tv_terms_condition">Setuju dengan</string>
     <string name="tv_terms_condition_redirect"><u>Syarat &amp; Ketentuan</u></string>
 
     <string name="tv_name">Nama</string>
     <string name="tv_email">Email</string>
+    <string name="tv_email_placeholder">fufufafa@gmail.com</string>
     <string name="tv_password">Password</string>
 
     <string name="title_login">Hai!</string>
@@ -43,6 +46,9 @@
     <string name="desc_login_here"><u>Daftar disini!</u></string>
     <string name="tv_forgot_password"><u>Lupa password?</u></string>
     <string name="tv_login_option">atau masuk dengan</string>
+
+    <string name="tv_title_sub_forget_password">Jangan khawatir! silahkan masukan kembali email kamu untuk dikirim otp ke email tersebut.</string>
+    <string name="btn_continue">Lanjutkan</string>
 
     <string name="tv_result">Hasil</string>
     <string name="tv_skin_type">Tipe Kulit</string>
@@ -76,6 +82,8 @@
 
     <string name="tv_title_homepage">Halo!</string>
     <string name="tv_title_sub_homepage">Alvano Hastagina</string>
+
+    <string name="tv_fav_empty">Kamu belum menambahkan produk apapun ke favorite kamu nih 😊</string>
 
     <string name="tv_description">Deskripsi</string>
     <string name="toast_add_fav">Produk disimpan!</string>

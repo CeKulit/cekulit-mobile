@@ -2,9 +2,11 @@ package com.bangkit.cekulit.ui.auth.signup
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.bangkit.cekulit.R
 import com.bangkit.cekulit.databinding.ActivitySignupBinding
 import com.bangkit.cekulit.ui.auth.login.LoginActivity
 
@@ -19,7 +21,18 @@ class SignupActivity : AppCompatActivity() {
         setupAction()
         setupSignupObserver()
 
+        binding.btnSignup.isEnabled = false
 
+        binding.cbTermsCondition.setOnCheckedChangeListener { _, isChecked ->
+            binding.btnSignup.isEnabled = isChecked
+        }
+
+        binding.tvTermsConditionRedirect.setOnClickListener {
+            showDialog(
+                getString(R.string.tv_title_terms_condition),
+                getString(R.string.tv_title_sub_terms_condition)
+            )
+        }
 
         binding.tvRedirect.setOnClickListener {
             val intent = Intent(this@SignupActivity, LoginActivity::class.java).apply {
@@ -65,24 +78,25 @@ class SignupActivity : AppCompatActivity() {
                 moveToLogin()
             }
             .setCancelable(false)
+            .create()
+            .show()
+    }
+
+    private fun showDialog(title: String, message: String){
+        AlertDialog.Builder(this)
+            .setTitle(title)
+            .setMessage(message)
+            .setPositiveButton("OK"){ dialog, _ ->
+                dialog.dismiss()
+            }
+            .create()
             .show()
     }
 
 
-
-    private fun showErrorDialog(message: String) {
-        AlertDialog.Builder(this).apply {
-            setTitle("Kesalahan")
-            setMessage(message)
-            setPositiveButton("OK", null)
-            create()
-            show()
-        }
+    private fun showLoading(isLoading: Boolean){
+        if(isLoading) binding.progressIndicator.visibility = View.VISIBLE else binding.progressIndicator.visibility = View.GONE
     }
-
-//    private fun showLoading(isLoading: Boolean){
-//        if(isLoading) binding.progressBar.visibility = View.VISIBLE else binding.progressBar.visibility = View.GONE
-//    }
 
     private fun showButton(isEnabled: Boolean){
         binding.btnSignup.isEnabled = !isEnabled
@@ -90,12 +104,12 @@ class SignupActivity : AppCompatActivity() {
 
     private fun setupSignupObserver(){
         signupViewModel.isLoading.observe(this){
-//            showLoading(it)
+            showLoading(it)
             showButton(it)
         }
 
         signupViewModel.responseSignup.observe(this){
-            showErrorDialog(it)
+            showDialog("Oops!", it)
         }
     }
 }
