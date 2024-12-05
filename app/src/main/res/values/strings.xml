@@ -80,4 +80,7 @@
     <string name="tv_description">Deskripsi</string>
     <string name="toast_add_fav">Produk disimpan!</string>
     <string name="toast_delete_fav">Produk dihapus!</string>
+
+    <string name="toast_permission_granted">Perizinan diterima!</string>
+    <string name="toast_permission_rejected">Perizinan ditolak!</string>
 </resources>

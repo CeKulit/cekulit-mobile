@@ -21,6 +21,7 @@ import androidx.camera.core.ImageCaptureException
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
+import com.bangkit.cekulit.R
 import com.bangkit.cekulit.databinding.ActivityCameraBinding
 import com.bangkit.cekulit.helper.Utils.createCustomTempFile
 import com.bangkit.cekulit.ui.result.ResultActivity
@@ -97,7 +98,6 @@ class CameraActivity : AppCompatActivity() {
     private fun takePhoto() {
         val imageCapture = imageCapture ?: return
         val photoFile = createCustomTempFile(application)
-        //output
         val outputOptions = ImageCapture.OutputFileOptions.Builder(photoFile).build()
 
         imageCapture.takePicture(
@@ -107,7 +107,7 @@ class CameraActivity : AppCompatActivity() {
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
                     val intent = Intent(this@CameraActivity, ResultActivity::class.java)
                     intent.putExtra(EXTRA_CAMERAX_IMAGE, output.savedUri.toString())
-                    setResult(CAMERAX_RESULT, intent)
+                    startActivity(intent)
                     finish()
                 }
                 override fun onError(exc: ImageCaptureException) {
@@ -165,20 +165,6 @@ class CameraActivity : AppCompatActivity() {
         }
     }
 
-    private fun startGallery() {
-        launcherGallery.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
-    }
-
-    private val launcherGallery = registerForActivityResult(
-        ActivityResultContracts.PickVisualMedia()
-    ) { uri: Uri? ->
-        if (uri != null) {
-            currentImageUri = uri
-        } else {
-//            showToast("No media selected")
-        }
-    }
-
     private fun allPermissionsGranted() =
         ContextCompat.checkSelfPermission(
             this,
@@ -190,9 +176,9 @@ class CameraActivity : AppCompatActivity() {
             ActivityResultContracts.RequestPermission()
         ) { isGranted: Boolean ->
             if (isGranted) {
-                Toast.makeText(this, "Permission request granted", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, R.string.toast_permission_granted, Toast.LENGTH_LONG).show()
             } else {
-                Toast.makeText(this, "Permission request denied", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, R.string.toast_permission_rejected, Toast.LENGTH_LONG).show()
             }
         }
 

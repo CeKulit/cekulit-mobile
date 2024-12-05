@@ -12,17 +12,6 @@
         android:id="@+id/viewFinder"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
-    <ImageView
-        android:id="@+id/iv_pick_gallery"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/iv_capture_image"
-        app:layout_constraintTop_toTopOf="@+id/iv_capture_image"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_capture_image"
-        app:srcCompat="@drawable/ic_image"
-        />
     
     <ImageView
         android:id="@+id/iv_capture_image"
@@ -38,8 +27,8 @@
         android:id="@+id/iv_switch_camera"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="40dp"
         app:layout_constraintEnd_toEndOf="@+id/viewFinder"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_switch_camera" />

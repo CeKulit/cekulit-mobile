@@ -2,8 +2,11 @@ package com.bangkit.cekulit
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.net.toUri
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -12,6 +15,8 @@ import com.bangkit.cekulit.databinding.ActivityMainBinding
 import com.bangkit.cekulit.ui.ViewModelFactory
 import com.bangkit.cekulit.ui.auth.login.LoginActivity
 import com.bangkit.cekulit.ui.auth.login.LoginViewModel
+import com.bangkit.cekulit.ui.camera.CameraActivity
+import com.bangkit.cekulit.ui.camera.CameraActivity.Companion.CAMERAX_RESULT
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
@@ -42,6 +47,10 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        binding.navFabScan.setOnClickListener {
+            startCameraX()
+        }
+
         val navView: BottomNavigationView = binding.navView
 
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
@@ -54,6 +63,21 @@ class MainActivity : AppCompatActivity() {
         )
 //        setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+    }
+
+    private fun startCameraX() {
+        val intent = Intent(this, CameraActivity::class.java)
+        launcherIntentCameraX.launch(intent)
+    }
+
+
+    //kiriman data(intent) akan diterima di dalam blok kode launcherIntentCameraX
+    private val launcherIntentCameraX = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) {
+        if (it.resultCode == CAMERAX_RESULT) {
+            Log.d("MAIN", "URI: ${it.data?.getStringExtra(CameraActivity.EXTRA_CAMERAX_IMAGE)?.toUri()}")
+        }
     }
 
 }

@@ -7,15 +7,25 @@
     android:layout_height="match_parent"
     tools:context=".ui.result.ResultActivity">
 
-    <ImageView
-        android:id="@+id/iv_result_photo"
-        android:layout_width="0dp"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_result_photo"
+        android:layout_width="match_parent"
         android:layout_height="320dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="0.1dp"
+        android:layout_margin="16dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:src="@drawable/ic_placeholder"
-        />
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_result_photo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_placeholder"
+            android:transitionName="photo" />
+    </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/tv_result"
@@ -27,7 +37,7 @@
         android:paddingVertical="14dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_result_photo"
+        app:layout_constraintTop_toBottomOf="@+id/card_result_photo"
         />
 
     <androidx.cardview.widget.CardView
@@ -143,18 +153,6 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_title_sub_overview"
         app:layout_constraintStart_toStartOf="@id/tv_title_sub_overview"
         android:layout_marginTop="24dp"
-        />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_morning_skincare"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="@+id/tv_morning_skincare"
-        app:layout_constraintTop_toBottomOf="@+id/tv_morning_skincare"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:listitem="@layout/item_skincare"
         />
 
 <!--    <TextView-->
