@@ -20,6 +20,9 @@
         android:theme="@style/Theme.CeKulit"
         tools:targetApi="31">
         <activity
+            android:name=".ui.detail.product.DetailProductActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.help.HelpActivity"
             android:exported="false" />
         <activity

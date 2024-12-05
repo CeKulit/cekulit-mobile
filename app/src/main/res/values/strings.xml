@@ -62,6 +62,9 @@
     <string name="tv_help">Dukungan &amp; dan Bantuan</string>
     <string name="tv_forget_password">Lupa Password</string>
     <string name="tv_logout">Keluar</string>
+    <string name="confirm_logout">Apakah anda yakin ingin keluar?</string>
+    <string name="confirm_yes">Iya</string>
+    <string name="confirm_no">Tidak</string>
 
     <string name="tv_title_help">Kami di CeKulit siap membantu Anda dengan segala hal yang Anda butuhkan terkait aplikasi ini.</string>
     <string name="tv_title_sub_help">Di CeKulit, tujuan kami sederhana: membantu Anda merasa lebih percaya diri dan mendapatkan informasi yang lebih baik tentang kesehatan kulit Anda setiap hari. Kami hadir untuk Anda. Bagikan kekhawatiran Anda atau jelajahi pertanyaan yang sering diajukan di bawah ini.</string>
@@ -71,4 +74,10 @@
     <string name="tv_title_faq_2">Bagaimana cara memindai kulit dengan aplikasi CeKulit?</string>
     <string name="tv_title_faq_3">Apakah CeKulit memberikan rekomendasi skincare rutin?</string>
 
+    <string name="tv_title_homepage">Halo!</string>
+    <string name="tv_title_sub_homepage">Alvano Hastagina</string>
+
+    <string name="tv_description">Deskripsi</string>
+    <string name="toast_add_fav">Produk disimpan!</string>
+    <string name="toast_delete_fav">Produk dihapus!</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.bangkit.cekulit.data.remote.retrofit.response
+package com.bangkit.cekulit.data.response
 
 import com.google.gson.annotations.SerializedName
 

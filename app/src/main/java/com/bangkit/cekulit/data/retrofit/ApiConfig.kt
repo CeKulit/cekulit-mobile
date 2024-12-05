@@ -1,4 +1,4 @@
-package com.bangkit.cekulit.data.remote.retrofit
+package com.bangkit.cekulit.data.retrofit
 
 import com.bangkit.cekulit.BuildConfig
 import okhttp3.OkHttpClient

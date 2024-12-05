@@ -8,9 +8,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.bangkit.cekulit.data.AuthRepository
-import com.bangkit.cekulit.data.remote.retrofit.ApiConfig
-import com.bangkit.cekulit.data.remote.retrofit.response.LoginResult
-import com.bangkit.cekulit.data.remote.retrofit.response.MessageResponse
+import com.bangkit.cekulit.data.retrofit.ApiConfig
+import com.bangkit.cekulit.data.response.LoginResult
+import com.bangkit.cekulit.data.response.MessageResponse
 import com.google.gson.Gson
 import kotlinx.coroutines.launch
 import retrofit2.HttpException

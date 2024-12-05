@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.google.gms.google.services)
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -41,6 +42,10 @@ android {
 }
 
 dependencies {
+
+    //room
+    implementation(libs.androidx.room.ktx)
+    ksp(libs.room.compiler)
 
     //Glide
     implementation(libs.glide)
