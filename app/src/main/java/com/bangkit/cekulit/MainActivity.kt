@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.toUri
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.bangkit.cekulit.databinding.ActivityMainBinding
 import com.bangkit.cekulit.ui.ViewModelFactory
@@ -18,9 +17,6 @@ import com.bangkit.cekulit.ui.auth.login.LoginViewModel
 import com.bangkit.cekulit.ui.camera.CameraActivity
 import com.bangkit.cekulit.ui.camera.CameraActivity.Companion.CAMERAX_RESULT
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.firebase.Firebase
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.auth
 
 class MainActivity : AppCompatActivity() {
     private val loginViewModel by viewModels<LoginViewModel> {
@@ -28,7 +24,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,12 +31,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        auth = Firebase.auth
-        val firebaseUser = auth.currentUser
+
 
 
         loginViewModel.authToken.observe(this){ token ->
-            if (firebaseUser == null && token.isNullOrEmpty()) {
+            if (token.isNullOrEmpty()) {
                 startActivity(Intent(this, LoginActivity::class.java))
                 finish()
             }
@@ -71,7 +65,6 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    //kiriman data(intent) akan diterima di dalam blok kode launcherIntentCameraX
     private val launcherIntentCameraX = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) {

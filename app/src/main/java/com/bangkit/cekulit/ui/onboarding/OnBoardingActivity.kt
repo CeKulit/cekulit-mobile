@@ -14,10 +14,6 @@ import com.bangkit.cekulit.ui.ViewModelFactory
 import com.bangkit.cekulit.ui.auth.login.LoginActivity
 import com.bangkit.cekulit.ui.auth.login.LoginViewModel
 import com.bangkit.cekulit.ui.auth.signup.SignupActivity
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 
 class OnBoardingActivity : AppCompatActivity() {
     private val loginViewModel by viewModels<LoginViewModel> {
@@ -25,7 +21,6 @@ class OnBoardingActivity : AppCompatActivity() {
     }
 
     private lateinit var binding: ActivityOnBoardingBinding
-    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,8 +28,15 @@ class OnBoardingActivity : AppCompatActivity() {
         binding = ActivityOnBoardingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        auth = Firebase.auth
+
         setupView()
+
+        loginViewModel.authToken.observe(this){ token ->
+            if(token.isNotEmpty()){
+                startActivity(Intent(this@OnBoardingActivity, MainActivity::class.java))
+                finish()
+            }
+        }
 
         binding.btnLogin.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
@@ -63,20 +65,5 @@ class OnBoardingActivity : AppCompatActivity() {
             )
         }
         supportActionBar?.hide()
-    }
-
-    private fun updateUI(currentUser: FirebaseUser?) {
-        loginViewModel.authToken.observe(this){ token ->
-            if(token.isNotEmpty() || currentUser != null){
-                startActivity(Intent(this@OnBoardingActivity, MainActivity::class.java))
-                finish()
-            }
-        }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        val currentUser = auth.currentUser
-        updateUI(currentUser)
     }
 }

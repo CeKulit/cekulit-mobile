@@ -12,15 +12,11 @@ import com.bangkit.cekulit.R
 import com.bangkit.cekulit.databinding.FragmentSettingBinding
 import com.bangkit.cekulit.ui.ViewModelFactory
 import com.bangkit.cekulit.ui.help.HelpActivity
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 
 class SettingFragment : Fragment() {
 
     private var _binding: FragmentSettingBinding? = null
     private val binding get() = _binding!!
-    private lateinit var auth: FirebaseAuth
     private val settingViewModel: SettingViewModel by viewModels {
         ViewModelFactory.getInstance(requireActivity())
     }
@@ -33,8 +29,6 @@ class SettingFragment : Fragment() {
 
         _binding = FragmentSettingBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
-        auth = Firebase.auth
 
         return root
     }
@@ -55,7 +49,6 @@ class SettingFragment : Fragment() {
         AlertDialog.Builder(requireContext())
             .setMessage(R.string.confirm_logout)
             .setPositiveButton(R.string.confirm_yes){_, _ ->
-                auth.signOut()
                 settingViewModel.logout()
             }
             .setNegativeButton(R.string.confirm_no){dialog, _ ->
