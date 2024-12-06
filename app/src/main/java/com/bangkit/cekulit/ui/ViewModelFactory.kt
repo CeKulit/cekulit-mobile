@@ -17,9 +17,6 @@ class ViewModelFactory(private val authRepository: AuthRepository, private val p
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return when {
-//            modelClass.isAssignableFrom(MainViewModel::class.java) -> {
-//                MainViewModel(repository) as T
-//            }
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
                 LoginViewModel(authRepository) as T
             }
@@ -35,12 +32,6 @@ class ViewModelFactory(private val authRepository: AuthRepository, private val p
             modelClass.isAssignableFrom(FavoriteViewModel::class.java) -> {
                 FavoriteViewModel(productRepository) as T
             }
-//            modelClass.isAssignableFrom(DetailViewModel::class.java) -> {
-//                DetailViewModel(repository) as T
-//            }
-//            modelClass.isAssignableFrom(UploadViewModel::class.java) -> {
-//                UploadViewModel(repository) as T
-//            }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
     }

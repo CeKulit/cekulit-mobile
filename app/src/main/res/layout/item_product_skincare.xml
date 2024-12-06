@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="8dp">
+        >
 
         <ImageView
             android:id="@+id/iv_photo_skincare"
@@ -26,8 +26,8 @@
             android:id="@+id/tv_brand_skincare"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:paddingHorizontal="8dp"
+            android:layout_marginTop="12dp"
+            android:paddingHorizontal="16dp"
             android:text="G2Glow"
             android:textColor="@android:color/black"
             android:textSize="16sp"
@@ -38,7 +38,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:paddingHorizontal="8dp"
+            android:paddingHorizontal="16dp"
+            android:paddingBottom="8dp"
             android:text="Mencerahkan muka secerah masa depan wow bagus banget plis dibeli dong"
             android:textColor="@android:color/darker_gray"
             android:textSize="14sp" />
