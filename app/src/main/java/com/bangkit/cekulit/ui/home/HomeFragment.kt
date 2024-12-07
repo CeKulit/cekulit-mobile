@@ -2,6 +2,7 @@ package com.bangkit.cekulit.ui.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,13 +25,16 @@ class HomeFragment : Fragment() {
         ViewModelFactory.getInstance(requireActivity())
     }
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
 
+
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
+
         val root: View = binding.root
 
         return root
@@ -46,6 +50,11 @@ class HomeFragment : Fragment() {
         homeViewModel.authToken.observe(viewLifecycleOwner) { token ->
             if (!token.isNullOrEmpty()) {
                 homeViewModel.getProducts()
+                homeViewModel.getProfile()
+                homeViewModel.profile.observe(viewLifecycleOwner){
+                    requireActivity().intent.putExtra(NAME_USER, it.name)
+                    binding.tvTitleSubHomepage.text = it.name
+                }
             } else {
                 val intent = Intent(requireContext(), LoginActivity::class.java)
                 startActivity(intent)
@@ -94,5 +103,9 @@ class HomeFragment : Fragment() {
                 homeViewModel.showFilter(query)
             }
         }
+    }
+
+    companion object {
+        const val NAME_USER = "name"
     }
 }

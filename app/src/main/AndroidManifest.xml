@@ -59,7 +59,7 @@
             android:screenOrientation="portrait"
             />
         <activity
-            android:name=".ui.onboarding.OnBoardingActivity"
+            android:name=".ui.onboarding.OnboardingActivity"
             android:exported="true"
             android:label="@string/onboarding"
             android:screenOrientation="portrait"
@@ -71,7 +71,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.main.MainActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             />

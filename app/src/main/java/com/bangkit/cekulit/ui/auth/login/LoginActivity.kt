@@ -6,7 +6,7 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.bangkit.cekulit.MainActivity
+import com.bangkit.cekulit.ui.main.MainActivity
 import com.bangkit.cekulit.databinding.ActivityLoginBinding
 import com.bangkit.cekulit.ui.ViewModelFactory
 import com.bangkit.cekulit.ui.auth.reset.ForgetPasswordActivity

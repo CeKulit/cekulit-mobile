@@ -12,6 +12,7 @@ import com.bangkit.cekulit.R
 import com.bangkit.cekulit.databinding.FragmentSettingBinding
 import com.bangkit.cekulit.ui.ViewModelFactory
 import com.bangkit.cekulit.ui.help.HelpActivity
+import com.bangkit.cekulit.ui.home.HomeFragment.Companion.NAME_USER
 
 class SettingFragment : Fragment() {
 
@@ -43,6 +44,9 @@ class SettingFragment : Fragment() {
         binding.llLogout.setOnClickListener {
             showDialog()
         }
+
+        val username = requireActivity().intent.getStringExtra(NAME_USER)
+        binding.tvUsername.text = username
     }
 
     private fun showDialog(){

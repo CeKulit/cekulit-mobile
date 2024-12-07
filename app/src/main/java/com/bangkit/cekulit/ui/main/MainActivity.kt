@@ -1,4 +1,4 @@
-package com.bangkit.cekulit
+package com.bangkit.cekulit.ui.main
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,6 +10,7 @@ import androidx.core.net.toUri
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
+import com.bangkit.cekulit.R
 import com.bangkit.cekulit.databinding.ActivityMainBinding
 import com.bangkit.cekulit.ui.ViewModelFactory
 import com.bangkit.cekulit.ui.auth.login.LoginActivity
@@ -30,8 +31,6 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
 
 
         loginViewModel.authToken.observe(this){ token ->

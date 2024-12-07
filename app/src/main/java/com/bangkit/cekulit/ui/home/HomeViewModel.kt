@@ -8,6 +8,7 @@ import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.bangkit.cekulit.data.AuthRepository
 import com.bangkit.cekulit.data.response.ProductResponseItem
+import com.bangkit.cekulit.data.response.ProfileResponse
 import com.bangkit.cekulit.data.retrofit.ApiConfig
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
@@ -23,7 +24,8 @@ class HomeViewModel(private val authRepository: AuthRepository) : ViewModel() {
 
     val authToken: LiveData<String> = authRepository.getSession().asLiveData()
 
-
+    private val _profile = MutableLiveData<ProfileResponse>()
+    val profile: LiveData<ProfileResponse> = _profile
 
     fun getProducts(query: String? = null){
         viewModelScope.launch {
@@ -43,6 +45,23 @@ class HomeViewModel(private val authRepository: AuthRepository) : ViewModel() {
             catch (e: HttpException){
                 _isLoading.value = false
                 Log.e("getStories", e.message.toString())
+            }
+        }
+
+    }
+
+    fun getProfile(){
+        viewModelScope.launch {
+            try {
+                val response = ApiConfig.getApiService(":3000").getProfile("Bearer ${authToken.value!!}")
+                Log.e("PROFILE", "$response" )
+                _profile.value = response
+            }
+            catch (e: SocketTimeoutException) {
+                Log.e("PROFILE", "Request timed out!")
+            }
+            catch (e: HttpException){
+                Log.e("getProfile", e.message.toString())
             }
         }
 

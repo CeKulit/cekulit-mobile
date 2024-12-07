@@ -8,14 +8,14 @@ import android.view.WindowManager
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.bangkit.cekulit.MainActivity
+import com.bangkit.cekulit.ui.main.MainActivity
 import com.bangkit.cekulit.databinding.ActivityOnBoardingBinding
 import com.bangkit.cekulit.ui.ViewModelFactory
 import com.bangkit.cekulit.ui.auth.login.LoginActivity
 import com.bangkit.cekulit.ui.auth.login.LoginViewModel
 import com.bangkit.cekulit.ui.auth.signup.SignupActivity
 
-class OnBoardingActivity : AppCompatActivity() {
+class OnboardingActivity : AppCompatActivity() {
     private val loginViewModel by viewModels<LoginViewModel> {
         ViewModelFactory.getInstance(this)
     }
@@ -33,7 +33,7 @@ class OnBoardingActivity : AppCompatActivity() {
 
         loginViewModel.authToken.observe(this){ token ->
             if(token.isNotEmpty()){
-                startActivity(Intent(this@OnBoardingActivity, MainActivity::class.java))
+                startActivity(Intent(this@OnboardingActivity, MainActivity::class.java))
                 finish()
             }
         }
