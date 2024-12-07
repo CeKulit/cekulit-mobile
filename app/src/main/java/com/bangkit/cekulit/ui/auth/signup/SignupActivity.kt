@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bangkit.cekulit.R
 import com.bangkit.cekulit.databinding.ActivitySignupBinding
 import com.bangkit.cekulit.ui.auth.login.LoginActivity
+import com.bangkit.cekulit.ui.auth.reset.otp.OtpActivity
 
 class SignupActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignupBinding
@@ -60,13 +61,10 @@ class SignupActivity : AppCompatActivity() {
     }
 
 
-    private fun moveToLogin(){
-        val intent = Intent(this@SignupActivity, LoginActivity::class.java).apply {
-            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-        }
+    private fun moveActivity(email: String){
+        val intent = Intent(this@SignupActivity, OtpActivity::class.java)
+        intent.putExtra(EMAIL_USER, email)
         startActivity(intent)
-        finish()
-
     }
 
     private fun showSuccessDialog(message: String) {
@@ -75,7 +73,8 @@ class SignupActivity : AppCompatActivity() {
             .setMessage(message)
             .setPositiveButton("OK") { dialog, _ ->
                 dialog.dismiss()
-                moveToLogin()
+                val email = binding.edSignupEmail.text.toString()
+                moveActivity(email)
             }
             .setCancelable(false)
             .create()
@@ -111,5 +110,9 @@ class SignupActivity : AppCompatActivity() {
         signupViewModel.responseSignup.observe(this){
             showDialog("Oops!", it)
         }
+    }
+
+    companion object {
+        const val EMAIL_USER = "email"
     }
 }

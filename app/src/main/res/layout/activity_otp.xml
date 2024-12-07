@@ -5,6 +5,136 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.auth.reset.OtpActivity">
+    tools:context=".ui.auth.reset.otp.OtpActivity">
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/progress_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="@dimen/root_layout_padding_horizontal"
+        >
+        <TextView
+            android:id="@+id/tv_title_otp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_title_otp"
+            android:textSize="@dimen/title_menu"
+            android:textColor="@color/pink"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="160dp"
+            android:layout_marginBottom="12dp"
+            />
+
+        <TextView
+            android:id="@+id/tv_title_sub_otp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_title_sub_otp"
+            android:gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_otp"
+            android:layout_marginTop="20dp"
+            />
+
+        <LinearLayout
+            android:id="@+id/ll_ed_otp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_sub_otp"
+            android:orientation="horizontal"
+            android:layout_marginTop="80dp"
+            >
+            <EditText
+                android:id="@+id/ed_otp_1"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:cursorVisible="false"
+                android:imeOptions="actionNone"
+                android:maxLength="1"
+                android:maxLines="1"
+                android:inputType="numberDecimal"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:background="@color/gray"
+                />
+            <EditText
+                android:id="@+id/ed_otp_2"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:cursorVisible="false"
+                android:imeOptions="actionNone"
+                android:maxLength="1"
+                android:maxLines="1"
+                android:inputType="numberDecimal"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:background="@color/gray"
+                android:layout_marginHorizontal="8dp"
+                />
+            <EditText
+                android:id="@+id/ed_otp_3"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:cursorVisible="false"
+                android:imeOptions="actionNone"
+                android:maxLength="1"
+                android:maxLines="1"
+                android:inputType="numberDecimal"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:background="@color/gray"
+                android:layout_marginEnd="8dp"
+                />
+            <EditText
+                android:id="@+id/ed_otp_4"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:cursorVisible="false"
+                android:imeOptions="actionNone"
+                android:maxLength="1"
+                android:maxLines="1"
+                android:inputType="numberDecimal"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:background="@color/gray"
+                android:textCursorDrawable="@null"
+                />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_continue"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:text="@string/btn_continue"
+            android:backgroundTint="@color/pink"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ll_ed_otp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.1"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

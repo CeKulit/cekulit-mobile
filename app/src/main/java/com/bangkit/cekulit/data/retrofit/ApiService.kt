@@ -23,6 +23,13 @@ interface ApiService {
     ): MessageResponse
 
     @FormUrlEncoded
+    @POST("otp")
+    suspend fun otp(
+        @Field("email") email: String,
+        @Field("otp") otp: String
+    ): MessageResponse
+
+    @FormUrlEncoded
     @POST("login")
     suspend fun login(
         @Field("email") email: String,

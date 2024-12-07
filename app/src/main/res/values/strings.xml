@@ -35,6 +35,9 @@
     <string name="tv_terms_condition">Setuju dengan</string>
     <string name="tv_terms_condition_redirect"><u>Syarat &amp; Ketentuan</u></string>
 
+    <string name="tv_title_otp">Verifikasi OTP</string>
+    <string name="tv_title_sub_otp">Silahkan masukan OTP yang dikirim dari email </string>
+
     <string name="tv_name">Nama</string>
     <string name="tv_email">Email</string>
     <string name="tv_password">Password</string>
