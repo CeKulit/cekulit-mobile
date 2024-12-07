@@ -5,16 +5,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.appcompat.widget.SearchView.OnQueryTextListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.bangkit.cekulit.data.response.ListStoryItem
+import com.bangkit.cekulit.data.response.ProductResponseItem
 import com.bangkit.cekulit.databinding.FragmentHomeBinding
 import com.bangkit.cekulit.ui.ViewModelFactory
 import com.bangkit.cekulit.ui.auth.login.LoginActivity
-import com.bangkit.cekulit.ui.setting.SettingViewModel
+import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
 
@@ -45,7 +45,7 @@ class HomeFragment : Fragment() {
 
         homeViewModel.authToken.observe(viewLifecycleOwner) { token ->
             if (!token.isNullOrEmpty()) {
-                homeViewModel.getStories()
+                homeViewModel.getProducts()
             } else {
                 val intent = Intent(requireContext(), LoginActivity::class.java)
                 startActivity(intent)
@@ -56,6 +56,18 @@ class HomeFragment : Fragment() {
         homeViewModel.product.observe(viewLifecycleOwner){
             showProduct(it)
         }
+
+        binding.searchView.setOnQueryTextListener(object: OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                filter(newText ?: "")
+                return true
+            }
+
+        })
     }
 
     override fun onDestroyView() {
@@ -63,7 +75,7 @@ class HomeFragment : Fragment() {
         _binding = null
     }
 
-    private fun showProduct(product: List<ListStoryItem>) {
+    private fun showProduct(product: List<ProductResponseItem>) {
         if (product.isNotEmpty()) {
             val adapter = ProductAdapter()
             adapter.submitList(product)
@@ -74,5 +86,13 @@ class HomeFragment : Fragment() {
 
     private fun showLoading(isLoading: Boolean){
         if(isLoading) binding.progressBar.visibility = View.VISIBLE else binding.progressBar.visibility = View.GONE
+    }
+
+    private fun filter(query: String?){
+        homeViewModel.viewModelScope.launch {
+            if(!query.isNullOrEmpty()){
+                homeViewModel.showFilter(query)
+            }
+        }
     }
 }

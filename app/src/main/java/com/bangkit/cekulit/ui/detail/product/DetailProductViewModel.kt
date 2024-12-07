@@ -8,9 +8,8 @@ import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.bangkit.cekulit.data.AuthRepository
 import com.bangkit.cekulit.data.ProductRepository
-import com.bangkit.cekulit.data.response.ListStoryItem
-import com.bangkit.cekulit.data.retrofit.ApiConfig
 import com.bangkit.cekulit.data.response.Story
+import com.bangkit.cekulit.data.retrofit.ApiConfig
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import java.net.SocketTimeoutException
@@ -29,7 +28,7 @@ class DetailProductViewModel(private val authRepository: AuthRepository, private
         viewModelScope.launch {
             _isLoading.value = true
             try {
-                val response = ApiConfig.getApiService().getDetailStory("Bearer ${authToken.value!!}", id)
+                val response = ApiConfig.getApiService(":4000").getDetailProduct("Bearer ${authToken.value!!}", id)
                 _isLoading.value = false
 
                 _products.value = response.story!!

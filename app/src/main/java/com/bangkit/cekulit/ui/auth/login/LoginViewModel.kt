@@ -8,9 +8,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.bangkit.cekulit.data.AuthRepository
-import com.bangkit.cekulit.data.retrofit.ApiConfig
-import com.bangkit.cekulit.data.response.LoginResult
+import com.bangkit.cekulit.data.response.LoginResponse
 import com.bangkit.cekulit.data.response.MessageResponse
+import com.bangkit.cekulit.data.retrofit.ApiConfig
 import com.google.gson.Gson
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
@@ -18,8 +18,8 @@ import java.net.SocketTimeoutException
 
 class LoginViewModel(private val repository: AuthRepository) : ViewModel() {
 
-    private val _userLogin = MutableLiveData<LoginResult>()
-    val userLogin: LiveData<LoginResult> = _userLogin
+    private val _userLogin = MutableLiveData<LoginResponse>()
+    val userLogin: LiveData<LoginResponse> = _userLogin
     private val _responseLogin = MutableLiveData<String>()
     val responseLogin: LiveData<String> = _responseLogin
     private val _isLoading = MutableLiveData<Boolean>()
@@ -40,10 +40,10 @@ class LoginViewModel(private val repository: AuthRepository) : ViewModel() {
         viewModelScope.launch {
             _isLoading.value = true
             try {
-                val response = ApiConfig.getApiService().login(email, password)
+                val response = ApiConfig.getApiService(":3000").login(email, password)
                 _isLoading.value = false
 
-                _userLogin.value = response.loginResult!!
+                _userLogin.value = response
 
             }
             catch (e: SocketTimeoutException) {

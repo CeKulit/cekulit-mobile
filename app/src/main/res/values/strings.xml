@@ -37,7 +37,6 @@
 
     <string name="tv_name">Nama</string>
     <string name="tv_email">Email</string>
-    <string name="tv_email_placeholder">fufufafa@gmail.com</string>
     <string name="tv_password">Password</string>
 
     <string name="title_login">Hai!</string>
@@ -84,6 +83,7 @@
     <string name="tv_title_sub_homepage">Alvano Hastagina</string>
 
     <string name="tv_fav_empty">Kamu belum menambahkan produk apapun ke favorite kamu nih 😊</string>
+    <string name="tv_product_empty">Produk yang kamu cari belum ada nih 😢</string>
 
     <string name="tv_description">Deskripsi</string>
     <string name="toast_add_fav">Produk disimpan!</string>

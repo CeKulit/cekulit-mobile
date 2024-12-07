@@ -7,17 +7,15 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.bangkit.cekulit.data.AuthRepository
+import com.bangkit.cekulit.data.response.ProductResponseItem
 import com.bangkit.cekulit.data.retrofit.ApiConfig
-import com.bangkit.cekulit.data.response.ListStoryItem
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import retrofit2.HttpException
 import java.net.SocketTimeoutException
 
 class HomeViewModel(private val authRepository: AuthRepository) : ViewModel() {
-    private val _product = MutableLiveData<List<ListStoryItem>>()
-    val product: LiveData<List<ListStoryItem>> = _product
+    private val _product = MutableLiveData<List<ProductResponseItem>>()
+    val product: LiveData<List<ProductResponseItem>> = _product
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
     private val _isEmpty = MutableLiveData<Boolean>()
@@ -27,14 +25,16 @@ class HomeViewModel(private val authRepository: AuthRepository) : ViewModel() {
 
 
 
-    fun getStories(){
+    fun getProducts(query: String? = null){
         viewModelScope.launch {
             _isLoading.value = true
             try {
-                val response = ApiConfig.getApiService().getStories("Bearer ${authToken.value!!}")
+                val response = ApiConfig.getApiService(":4000").getProducts("Bearer ${authToken.value!!}")
                 _isLoading.value = false
 
-                _product.value = response.listStory
+                _product.value = response
+
+                _isEmpty.value = response.isEmpty()
 
             }
             catch (e: SocketTimeoutException) {
@@ -48,8 +48,7 @@ class HomeViewModel(private val authRepository: AuthRepository) : ViewModel() {
 
     }
 
-
-//    fun showFilter(query: String?){
-//        getStories(query)
-//    }
+    fun showFilter(query: String?){
+        getProducts(query)
+    }
 }

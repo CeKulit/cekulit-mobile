@@ -3,7 +3,8 @@ package com.bangkit.cekulit.data.retrofit
 import com.bangkit.cekulit.data.response.DetailResponse
 import com.bangkit.cekulit.data.response.LoginResponse
 import com.bangkit.cekulit.data.response.MessageResponse
-import com.bangkit.cekulit.data.response.StoriesResponse
+import com.bangkit.cekulit.data.response.ProductResponseItem
+import com.bangkit.cekulit.data.response.ProfileResponse
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
@@ -28,14 +29,19 @@ interface ApiService {
         @Field("password") password: String
     ): LoginResponse
 
-
-    @GET("stories")
-    suspend fun getStories(
+    @GET("profile")
+    suspend fun getProfile(
         @Header("Authorization") token: String,
-    ): StoriesResponse
+    ): ProfileResponse
+
+    @GET("data")
+    suspend fun getProducts(
+        @Header("Authorization") token: String,
+        @Query("q") query: String? = null
+    ): List<ProductResponseItem>
 
     @GET("stories/{id}")
-    suspend fun getDetailStory(
+    suspend fun getDetailProduct(
         @Header("Authorization") token: String,
         @Path("id") id: String
     ): DetailResponse

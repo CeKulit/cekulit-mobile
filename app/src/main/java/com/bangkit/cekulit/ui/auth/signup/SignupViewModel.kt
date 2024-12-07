@@ -25,7 +25,7 @@ class SignupViewModel: ViewModel() {
         viewModelScope.launch {
             _isLoading.value = true
             try {
-                val response = ApiConfig.getApiService().register(name,email, password)
+                val response = ApiConfig.getApiService(":3000").register(name,email, password)
                 _isLoading.value = false
                 _isSuccess.value = response
 
