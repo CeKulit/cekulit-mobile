@@ -52,13 +52,16 @@
     <string name="tv_title_sub_forget_password">Jangan khawatir! silahkan masukan kembali email kamu untuk dikirim otp ke email tersebut.</string>
     <string name="btn_continue">Lanjutkan</string>
 
-    <string name="tv_result">Hasil</string>
+    <string name="tv_result">Kondisi kulit kamu saat ini</string>
     <string name="tv_skin_type">Tipe Kulit</string>
     <string name="tv_skin_care">Bahan Skincare</string>
     <string name="tv_oil_type">Beryinyak</string>
     <string name="tv_ingredient_skin_care">Salicylic Acid, Glycolic Acid, Niacinamide</string>
-    <string name="tv_title_overview">Overview</string>
-    <string name="tv_title_sub_overview">your skin type is classified as oily. Oily skin is characterized by an overproduction of sebum (natural skin oil), which may cause a shiny or greasy appearance, particularly on the T-zone (forehead, nose, and chin). </string>
+    <string name="tv_overview">Jenis kulit Anda tergolong berminyak. Kulit berminyak ditandai dengan produksi sebum (minyak alami kulit) yang berlebihan, yang dapat menyebabkan tampilan mengilap atau berminyak, terutama di daerah T (dahi, hidung, dan dagu).</string>
+    <string name="btn_routine">Yuk, rutin pakai skincare!</string>
+
+    <string name="tv_title_skincare">Rawat kulit kamu dengan skincare routine ini!</string>
+    
     <string name="tv_morning_skincare">Skincare Pagi</string>
     <string name="tv_night_skincare">Skincare Malam</string>
     <string name="btn_search_redirect">Search in Tokopedia</string>

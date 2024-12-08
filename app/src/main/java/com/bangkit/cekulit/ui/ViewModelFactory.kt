@@ -11,6 +11,7 @@ import com.bangkit.cekulit.ui.detail.product.DetailProductViewModel
 import com.bangkit.cekulit.ui.favorite.FavoriteViewModel
 import com.bangkit.cekulit.ui.home.HomeViewModel
 import com.bangkit.cekulit.ui.setting.SettingViewModel
+import com.bangkit.cekulit.ui.skincare.SkincareViewModel
 
 class ViewModelFactory(private val authRepository: AuthRepository, private val productRepository: ProductRepository) : ViewModelProvider.NewInstanceFactory() {
 
@@ -31,6 +32,9 @@ class ViewModelFactory(private val authRepository: AuthRepository, private val p
             }
             modelClass.isAssignableFrom(FavoriteViewModel::class.java) -> {
                 FavoriteViewModel(productRepository) as T
+            }
+            modelClass.isAssignableFrom(SkincareViewModel::class.java) -> {
+                SkincareViewModel(authRepository) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
