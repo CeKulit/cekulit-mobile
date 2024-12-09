@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.bangkit.cekulit.R
+import com.bangkit.cekulit.data.response.DetailProductResponse
 import com.bangkit.cekulit.databinding.ActivityDetailProductBinding
 import com.bangkit.cekulit.ui.ViewModelFactory
 import com.bangkit.cekulit.ui.auth.login.LoginActivity
@@ -31,25 +32,42 @@ class DetailProductActivity : AppCompatActivity() {
         binding = ActivityDetailProductBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val photoProduct = intent.getStringExtra(PHOTO_PRODUCT)
+        val titleProduct = intent.getStringExtra(TITLE_PRODUCT)
         val descProduct = intent.getStringExtra(DESC_PRODUCT)
+
+        val detailProduct = DetailProductResponse(
+            photoUrl = photoProduct,
+            title = titleProduct,
+            desc = descProduct!!
+        )
+
+
+        Glide.with(binding.ivDetailPhoto.context)
+            .load(photoProduct)
+            .into(binding.ivDetailPhoto)
+        binding.apply {
+            tvDetailName.text = title
+            tvDetailDescription.text = descProduct
+            fabFavorite.setOnClickListener {
+                if (isFav) {
+                    Toast.makeText(this@DetailProductActivity, R.string.toast_delete_fav, Toast.LENGTH_SHORT).show()
+                    detailViewModel.deleteProduct(descProduct)
+                    isFav = false
+                } else {
+                    Toast.makeText(this@DetailProductActivity, R.string.toast_add_fav, Toast.LENGTH_SHORT).show()
+                    detailViewModel.saveProduct(listOf(detailProduct))
+                    isFav = true
+                }
+            }
+        }
 
         detailViewModel.isLoading.observe(this){
             showLoading(it)
         }
 
 
-        detailViewModel.authToken.observe(this){
-            if(it.isNullOrEmpty()) {
-                val intent = Intent(this@DetailProductActivity, LoginActivity::class.java)
-                startActivity(intent)
-                finish()
-            } else {
-                detailViewModel.getDetailProduct(descProduct!!)
-                setupView(descProduct)
-            }
-        }
-
-        detailViewModel.getProductByDesc(descProduct!!).observe(this) { result ->
+        detailViewModel.getProductByDesc(descProduct).observe(this) { result ->
             if (result != null) {
                 isFav = true
                 binding.fabFavorite.setImageResource(R.drawable.ic_favorite_fill)
@@ -60,28 +78,6 @@ class DetailProductActivity : AppCompatActivity() {
         }
     }
 
-    private fun setupView(id: String){
-        detailViewModel.products.observe(this){ product ->
-            Glide.with(binding.ivDetailPhoto.context)
-                .load(product.poster)
-                .into(binding.ivDetailPhoto)
-            binding.apply {
-                tvDetailName.text = product.title
-                tvDetailDescription.text = product.desc
-                fabFavorite.setOnClickListener {
-                    if (isFav) {
-                        Toast.makeText(this@DetailProductActivity, R.string.toast_delete_fav, Toast.LENGTH_SHORT).show()
-                        detailViewModel.deleteProduct(id)
-                        isFav = false
-                    } else {
-                        Toast.makeText(this@DetailProductActivity, R.string.toast_add_fav, Toast.LENGTH_SHORT).show()
-                        detailViewModel.saveProduct(listOf(product))
-                        isFav = true
-                    }
-                }
-            }
-        }
-    }
 
     private fun showLoading(isLoading: Boolean){
         if(isLoading) binding.progressBar.visibility = View.VISIBLE else binding.progressBar.visibility = View.GONE
@@ -93,6 +89,8 @@ class DetailProductActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val DESC_PRODUCT = "desc"
+        const val PHOTO_PRODUCT = "photo_product"
+        const val TITLE_PRODUCT = "title_product"
+        const val DESC_PRODUCT = "desc_product"
     }
 }

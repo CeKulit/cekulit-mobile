@@ -10,6 +10,8 @@ import com.bangkit.cekulit.data.response.ProductResponseItem
 import com.bangkit.cekulit.databinding.ItemProductSkincareBinding
 import com.bangkit.cekulit.ui.detail.product.DetailProductActivity
 import com.bangkit.cekulit.ui.detail.product.DetailProductActivity.Companion.DESC_PRODUCT
+import com.bangkit.cekulit.ui.detail.product.DetailProductActivity.Companion.PHOTO_PRODUCT
+import com.bangkit.cekulit.ui.detail.product.DetailProductActivity.Companion.TITLE_PRODUCT
 import com.bumptech.glide.Glide
 
 class ProductAdapter: ListAdapter<ProductResponseItem, ProductAdapter.MyViewHolder>(
@@ -23,11 +25,13 @@ class ProductAdapter: ListAdapter<ProductResponseItem, ProductAdapter.MyViewHold
                 .into(binding.ivPhotoSkincare)
             binding.tvBrandSkincare.text = listProduct.title
 //            binding.tvNameSkincare.text = listProduct.desc
-//            binding.root.setOnClickListener {
-//                val intent = Intent(binding.root.context, DetailProductActivity::class.java)
-//                intent.putExtra(DESC_PRODUCT, listProduct.desc)
-//                binding.root.context.startActivity(intent)
-//            }
+            binding.root.setOnClickListener {
+                val intent = Intent(binding.root.context, DetailProductActivity::class.java)
+                intent.putExtra(PHOTO_PRODUCT, listProduct.poster)
+                intent.putExtra(TITLE_PRODUCT, listProduct.title)
+                intent.putExtra(DESC_PRODUCT, listProduct.desc)
+                binding.root.context.startActivity(intent)
+            }
         }
     }
 

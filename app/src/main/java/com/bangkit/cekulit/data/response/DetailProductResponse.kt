@@ -6,24 +6,12 @@ import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "products")
 data class DetailProductResponse(
-
 	@PrimaryKey
-	@field:SerializedName("desc")
+	@SerializedName("desc")
 	val desc: String,
-
-	@field:SerializedName("title")
-	val title: String? = null,
-
-	@field:SerializedName("poster")
-	val poster: String,
-
-	@field:SerializedName("stars")
-	val stars: String,
-
-	@field:SerializedName("reviews_count")
-	val reviewsCount: String,
-
-	@field:SerializedName("link")
-	val link: String,
-
+	@SerializedName("photoUrl")
+	val photoUrl: String? = null,
+	@SerializedName("title")
+	val title: String? = null
 )
+

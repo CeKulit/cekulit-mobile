@@ -10,6 +10,8 @@ import com.bangkit.cekulit.data.response.DetailProductResponse
 import com.bangkit.cekulit.databinding.ItemFavProductBinding
 import com.bangkit.cekulit.ui.detail.product.DetailProductActivity
 import com.bangkit.cekulit.ui.detail.product.DetailProductActivity.Companion.DESC_PRODUCT
+import com.bangkit.cekulit.ui.detail.product.DetailProductActivity.Companion.PHOTO_PRODUCT
+import com.bangkit.cekulit.ui.detail.product.DetailProductActivity.Companion.TITLE_PRODUCT
 import com.bumptech.glide.Glide
 
 class FavProductAdapter: ListAdapter<DetailProductResponse, FavProductAdapter.MyViewHolder>(
@@ -19,15 +21,17 @@ class FavProductAdapter: ListAdapter<DetailProductResponse, FavProductAdapter.My
         fun bind(listFavProduct: DetailProductResponse){
             Glide
                 .with(binding.ivPhotoSkincare.context)
-                .load(listFavProduct.poster)
+                .load(listFavProduct.photoUrl)
                 .into(binding.ivPhotoSkincare)
             binding.tvBrandSkincare.text = listFavProduct.title
 //            binding.tvNameSkincare.text = listFavProduct.desc
-//            binding.root.setOnClickListener {
-//                val intent = Intent(binding.root.context, DetailProductActivity::class.java)
-//                intent.putExtra(DESC_PRODUCT, listFavProduct.desc)
-//                binding.root.context.startActivity(intent)
-//            }
+            binding.root.setOnClickListener {
+                val intent = Intent(binding.root.context, DetailProductActivity::class.java)
+                intent.putExtra(PHOTO_PRODUCT, listFavProduct.photoUrl)
+                intent.putExtra(TITLE_PRODUCT, listFavProduct.title)
+                intent.putExtra(DESC_PRODUCT, listFavProduct.desc)
+                binding.root.context.startActivity(intent)
+            }
         }
     }
 
