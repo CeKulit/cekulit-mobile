@@ -97,4 +97,8 @@
 
     <string name="toast_permission_granted">Perizinan diterima!</string>
     <string name="toast_permission_rejected">Perizinan ditolak!</string>
+
+    <string name="empty_image_warning">Gagal mengambil gambar.</string>
+    <string name="empty_camera_warning">Gagal membuka kamera.</string>
+
 </resources>

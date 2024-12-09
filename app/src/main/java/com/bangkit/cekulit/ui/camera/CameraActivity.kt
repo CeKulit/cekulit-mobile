@@ -9,11 +9,13 @@ import android.os.Bundle
 import android.util.Log
 import android.view.OrientationEventListener
 import android.view.Surface
+import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
@@ -21,10 +23,21 @@ import androidx.camera.core.ImageCaptureException
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import com.bangkit.cekulit.R
+import com.bangkit.cekulit.data.response.FileUploadResponse
+import com.bangkit.cekulit.data.retrofit.ApiConfig
 import com.bangkit.cekulit.databinding.ActivityCameraBinding
 import com.bangkit.cekulit.helper.Utils.createCustomTempFile
+import com.bangkit.cekulit.helper.Utils.reduceFileImage
+import com.bangkit.cekulit.helper.Utils.uriToFile
 import com.bangkit.cekulit.ui.result.ResultActivity
+import com.google.gson.Gson
+import kotlinx.coroutines.launch
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import retrofit2.HttpException
 
 class CameraActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCameraBinding
@@ -36,6 +49,7 @@ class CameraActivity : AppCompatActivity() {
     private var imageCapture: ImageCapture? = null
 
 
+    @RequiresApi(Build.VERSION_CODES.Q)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCameraBinding.inflate(layoutInflater)
@@ -52,7 +66,9 @@ class CameraActivity : AppCompatActivity() {
             startCamera()
         }
 
-        binding.ivCaptureImage.setOnClickListener { takePhoto() }
+        binding.ivCaptureImage.setOnClickListener {
+            takePhotoAndUpload()
+        }
     }
 
     public override fun onResume() {
@@ -87,7 +103,7 @@ class CameraActivity : AppCompatActivity() {
             } catch (e: Exception) {
                 Toast.makeText(
                     this@CameraActivity,
-                    "Gagal memunculkan kamera.",
+                    getString(R.string.empty_camera_warning),
                     Toast.LENGTH_SHORT
                 ).show()
                 Log.e(TAG, "startCamera: ${e.message}")
@@ -95,7 +111,7 @@ class CameraActivity : AppCompatActivity() {
         }, ContextCompat.getMainExecutor(this))
     }
 
-    private fun takePhoto() {
+    private fun takePhotoAndUpload() {
         val imageCapture = imageCapture ?: return
         val photoFile = createCustomTempFile(application)
         val outputOptions = ImageCapture.OutputFileOptions.Builder(photoFile).build()
@@ -104,18 +120,14 @@ class CameraActivity : AppCompatActivity() {
             outputOptions,
             ContextCompat.getMainExecutor(this),
             object : ImageCapture.OnImageSavedCallback {
+                @RequiresApi(Build.VERSION_CODES.Q)
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
-                    val intent = Intent(this@CameraActivity, ResultActivity::class.java)
-                    intent.putExtra(EXTRA_CAMERAX_IMAGE, output.savedUri.toString())
-                    startActivity(intent)
-                    finish()
+                    currentImageUri = output.savedUri
+                    uploadImageAndAnalysis(currentImageUri)
                 }
+
                 override fun onError(exc: ImageCaptureException) {
-                    Toast.makeText(
-                        this@CameraActivity,
-                        "Gagal mengambil gambar.",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    Toast.makeText(this@CameraActivity, getString(R.string.empty_image_warning), Toast.LENGTH_SHORT).show()
                     Log.e(TAG, "onError: ${exc.message}")
                 }
             }
@@ -182,6 +194,57 @@ class CameraActivity : AppCompatActivity() {
             }
         }
 
+    @RequiresApi(Build.VERSION_CODES.Q)
+    private fun uploadImageAndAnalysis(uri: Uri?) {
+        uri?.let { imageUri ->
+            val imageFile = uriToFile(imageUri, this).reduceFileImage()
+            Log.d("Image Classification File", "showImage: ${imageFile.path}")
+            showLoading(true)
+
+            val requestImageFile = imageFile.asRequestBody("image/jpeg".toMediaType())
+            val multipartBody = MultipartBody.Part.createFormData(
+                "photo",
+                imageFile.name,
+                requestImageFile
+            )
+
+            lifecycleScope.launch {
+                try {
+                    val apiService = ApiConfig.getApiService(":4000")
+                    val successResponse = apiService.uploadImage(multipartBody)
+                    with(successResponse.data) {
+                        val intent = Intent(this@CameraActivity, ResultActivity::class.java)
+                        if (isAboveThreshold == true) {
+                            showToast(successResponse.message.toString())
+                        } else {
+                            showToast("Model is predicted successfully but under threshold.")
+                        }
+
+                        intent.putExtra(EXTRA_CAMERAX_IMAGE, imageUri.toString())
+                        intent.putExtra(EXTRA_RESULT_ANALYSIS, "$confidenceScore $result")
+
+                        startActivity(intent)
+                        finish()
+                    }
+                    showLoading(false)
+                } catch (e: HttpException) {
+                    val errorBody = e.response()?.errorBody()?.string()
+                    val errorResponse = Gson().fromJson(errorBody, FileUploadResponse::class.java)
+                    showToast(errorResponse.message.toString())
+                    showLoading(false)
+                }
+            }
+        } ?: showToast(getString(R.string.empty_image_warning))
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        binding.progressIndicator.visibility = if (isLoading) View.VISIBLE else View.GONE
+    }
+
 
     override fun onStart() {
         super.onStart()
@@ -196,6 +259,7 @@ class CameraActivity : AppCompatActivity() {
     companion object {
         private const val TAG = "CameraActivity"
         const val EXTRA_CAMERAX_IMAGE = "CameraX Image"
+        const val EXTRA_RESULT_ANALYSIS = "Result Analysis"
         const val CAMERAX_RESULT = 200
         private const val REQUIRED_PERMISSION = Manifest.permission.CAMERA
     }

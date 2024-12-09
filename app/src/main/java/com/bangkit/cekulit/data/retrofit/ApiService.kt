@@ -1,15 +1,19 @@
 package com.bangkit.cekulit.data.retrofit
 
 import com.bangkit.cekulit.data.response.DetailResponse
+import com.bangkit.cekulit.data.response.FileUploadResponse
 import com.bangkit.cekulit.data.response.LoginResponse
 import com.bangkit.cekulit.data.response.MessageResponse
 import com.bangkit.cekulit.data.response.ProductResponseItem
 import com.bangkit.cekulit.data.response.ProfileResponse
+import okhttp3.MultipartBody
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.Header
+import retrofit2.http.Multipart
 import retrofit2.http.POST
+import retrofit2.http.Part
 import retrofit2.http.Path
 import retrofit2.http.Query
 
@@ -52,4 +56,10 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Path("id") id: String
     ): DetailResponse
+
+    @Multipart
+    @POST("/predict")
+    suspend fun uploadImage(
+        @Part file: MultipartBody.Part
+    ): FileUploadResponse
 }
