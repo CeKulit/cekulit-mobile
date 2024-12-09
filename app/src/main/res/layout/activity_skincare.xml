@@ -120,7 +120,7 @@
         />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_skincare"
+        android:id="@+id/rv_morning_skincare"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="20dp"
@@ -137,8 +137,18 @@
         android:textSize="@dimen/desc_menu"
         android:text="@string/tv_night_skincare"
         android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@id/rv_skincare"
+        app:layout_constraintTop_toBottomOf="@id/rv_morning_skincare"
         app:layout_constraintStart_toStartOf="@id/cv_skin_type"
         />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_night_skincare"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@id/tv_night_skincare"
+        app:layout_constraintTop_toBottomOf="@id/tv_night_skincare"
+        tools:listitem="@layout/item_skincare" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

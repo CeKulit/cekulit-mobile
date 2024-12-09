@@ -1,4 +1,4 @@
-package com.bangkit.cekulit.ui.skincare
+package com.bangkit.cekulit.ui.detail.skincare
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -6,32 +6,28 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import com.bangkit.cekulit.data.AuthRepository
-import com.bangkit.cekulit.data.response.ListSkincareResponse
-import com.bangkit.cekulit.data.response.ProfileResponse
+import com.bangkit.cekulit.data.response.DetailSkincareResponse
+import com.bangkit.cekulit.data.response.Skincare
 import com.bangkit.cekulit.data.retrofit.ApiConfig
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import java.net.SocketTimeoutException
 
-class SkincareViewModel(private val authRepository: AuthRepository) : ViewModel() {
-    private val _skincare = MutableLiveData<List<ListSkincareResponse>>()
-    val skincare: LiveData<List<ListSkincareResponse>> = _skincare
+class DetailSkincareViewModel: ViewModel() {
+    private val _skincare = MutableLiveData<Map<String, Skincare?>>()
+    val skincare: LiveData<Map<String, Skincare?>> = _skincare
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
-    
 
-    val authToken: LiveData<String> = authRepository.getSession().asLiveData()
 
-    fun getSkincare(){
+    fun getDetailProduct(){
         viewModelScope.launch {
             _isLoading.value = true
             try {
-                val response = ApiConfig.getApiService(":3000").getListSkincare()
+                val response = ApiConfig.getApiService(":3000").getDetailSkincare()
                 _isLoading.value = false
 
-                _skincare.value = response
-                Log.e("result skincare", "$response")
+                _skincare.value = response.toMap()
 
             }
             catch (e: SocketTimeoutException) {
@@ -39,10 +35,10 @@ class SkincareViewModel(private val authRepository: AuthRepository) : ViewModel(
             }
             catch (e: HttpException){
                 _isLoading.value = false
-                Log.e("getSkincare", e.message.toString())
+                Log.e("catch", e.message.toString() )
+
             }
         }
 
     }
-    
 }

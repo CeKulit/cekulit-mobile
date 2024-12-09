@@ -1,7 +1,9 @@
 package com.bangkit.cekulit.data.retrofit
 
 import com.bangkit.cekulit.data.response.DetailProductResponse
+import com.bangkit.cekulit.data.response.DetailSkincareResponse
 import com.bangkit.cekulit.data.response.FileUploadResponse
+import com.bangkit.cekulit.data.response.ListSkincareResponse
 import com.bangkit.cekulit.data.response.LoginResponse
 import com.bangkit.cekulit.data.response.MessageResponse
 import com.bangkit.cekulit.data.response.ProductResponseItem
@@ -47,15 +49,12 @@ interface ApiService {
         @Field("newPassword") newPassword: String
     ): MessageResponse
 
-
     @FormUrlEncoded
     @POST("login")
     suspend fun login(
         @Field("email") email: String,
         @Field("password") password: String
     ): LoginResponse
-
-
 
     @GET("profile")
     suspend fun getProfile(
@@ -76,6 +75,15 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Query("q") query: String? = null
     ): List<ProductResponseItem>
+
+    @GET("sc/list/day")
+    suspend fun getListSkincare(
+    ): List<ListSkincareResponse>
+
+    @GET("sc/detail/berminyak/day")
+    suspend fun getDetailSkincare(
+    ): DetailSkincareResponse
+
 
     @GET("data/{desc}")
     suspend fun getDetailProduct(

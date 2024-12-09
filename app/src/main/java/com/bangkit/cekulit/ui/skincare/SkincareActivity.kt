@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bangkit.cekulit.data.response.ListSkincareResponse
 import com.bangkit.cekulit.data.response.ProductResponseItem
 import com.bangkit.cekulit.databinding.ActivitySkincareBinding
 import com.bangkit.cekulit.ui.ViewModelFactory
@@ -31,12 +32,15 @@ class SkincareActivity : AppCompatActivity() {
 
     }
 
-    private fun showSkincare(skincare: List<ProductResponseItem>) {
+    private fun showSkincare(skincare: List<ListSkincareResponse>) {
         if (skincare.isNotEmpty()) {
             val adapter = SkincareAdapter()
             adapter.submitList(skincare)
-            binding.rvSkincare.adapter = adapter
-            binding.rvSkincare.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+            binding.rvMorningSkincare.adapter = adapter
+            binding.rvMorningSkincare.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+            binding.rvNightSkincare.adapter = adapter
+            binding.rvNightSkincare.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+
         }
     }
 }
