@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bangkit.cekulit.ui.main.MainActivity
 import com.bangkit.cekulit.databinding.ActivityLoginBinding
 import com.bangkit.cekulit.ui.ViewModelFactory
-import com.bangkit.cekulit.ui.auth.reset.ForgetPasswordActivity
+import com.bangkit.cekulit.ui.auth.reset.forget.ForgetPasswordActivity
 import com.bangkit.cekulit.ui.auth.signup.SignupActivity
 
 

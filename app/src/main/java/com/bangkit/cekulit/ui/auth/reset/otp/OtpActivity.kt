@@ -3,15 +3,15 @@ package com.bangkit.cekulit.ui.auth.reset.otp
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.bangkit.cekulit.R
 import com.bangkit.cekulit.databinding.ActivityOtpBinding
 import com.bangkit.cekulit.ui.auth.login.LoginActivity
-import com.bangkit.cekulit.ui.auth.signup.SignupActivity
+import com.bangkit.cekulit.ui.auth.reset.reset.ResetPasswordActivity
 import com.bangkit.cekulit.ui.auth.signup.SignupActivity.Companion.EMAIL_USER
 
 class OtpActivity : AppCompatActivity() {
@@ -26,15 +26,27 @@ class OtpActivity : AppCompatActivity() {
 
         setupObserver()
 
-        val email = intent.getStringExtra(EMAIL_USER)
+        val emailUser = intent.getStringExtra(EMAIL_USER)
+        val emailForget = intent.getStringExtra(EMAIL_FORGET)
 
-        binding.tvTitleSubOtp.text = getString(R.string.tv_title_sub_otp) + email
+
+        if (emailForget != null) {
+            binding.tvTitleSubOtp.text = getString(R.string.tv_title_sub_otp) + emailForget
+            Log.e("OTPACTIVITYFORGET", emailForget)
+        } else {
+            binding.tvTitleSubOtp.text = getString(R.string.tv_title_sub_otp) + emailUser
+            Log.e("OTPACTIVITYUSER", emailUser!!)
+        }
 
         binding.btnContinue.setOnClickListener {
             binding.apply {
                 val otp = edOtp1.text.toString() + edOtp2.text.toString() + edOtp3.text.toString() + edOtp4.text.toString()
                 if (otp.length == 4){
-                    otpViewModel.insertOtpUser(email!!, otp)
+                    if (emailForget != null){
+                        otpViewModel.insertOtpUser(emailForget, otp)
+                    } else {
+                        otpViewModel.insertOtpUser(emailUser!!, otp)
+                    }
                 } else {
                     showErrorDialog("Otp are required.")
                 }
@@ -42,7 +54,7 @@ class OtpActivity : AppCompatActivity() {
         }
 
         otpViewModel.isSuccess.observe(this){ response ->
-            showSuccessDialog(response.message!!)
+            showSuccessDialog(response.message!!, emailForget!!)
         }
 
         otpViewModel.responseOtp.observe(this){ responseMessage ->
@@ -51,22 +63,35 @@ class OtpActivity : AppCompatActivity() {
 
     }
 
-    private fun moveActivity(){
+    private fun moveLoginActivity(){
         val intent = Intent(this@OtpActivity, LoginActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
         startActivity(intent)
         finish()
-
     }
 
-    private fun showSuccessDialog(message: String) {
+    private fun moveResetActivity(bundle: String){
+        val intent = Intent(this@OtpActivity, ResetPasswordActivity::class.java).apply {
+            putExtra(EMAIL_FORGET, bundle)
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        }
+        startActivity(intent)
+        finish()
+    }
+
+    private fun showSuccessDialog(message: String, bundle: String) {
         AlertDialog.Builder(this)
             .setTitle("Yeay!")
             .setMessage(message)
             .setPositiveButton("OK") { dialog, _ ->
                 dialog.dismiss()
-                moveActivity()
+                val forgetEmail = intent.getStringExtra(EMAIL_FORGET)
+                if(forgetEmail != null) {
+                    moveResetActivity(bundle)
+                } else {
+                    moveLoginActivity()
+                }
             }
             .setCancelable(false)
             .create()
@@ -98,5 +123,10 @@ class OtpActivity : AppCompatActivity() {
             showLoading(it)
             showButton(it)
         }
+    }
+
+    companion object {
+        const val NAME_USER = "name"
+        const val EMAIL_FORGET = "forget"
     }
 }

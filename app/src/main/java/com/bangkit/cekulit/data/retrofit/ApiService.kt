@@ -34,6 +34,20 @@ interface ApiService {
     ): MessageResponse
 
     @FormUrlEncoded
+    @POST("forget-password")
+    suspend fun forgetPassword(
+        @Field("email") email: String,
+    ): MessageResponse
+
+    @FormUrlEncoded
+    @POST("reset-password")
+    suspend fun resetPassword(
+        @Field("email") email: String,
+        @Field("newPassword") newPassword: String
+    ): MessageResponse
+
+
+    @FormUrlEncoded
     @POST("login")
     suspend fun login(
         @Field("email") email: String,

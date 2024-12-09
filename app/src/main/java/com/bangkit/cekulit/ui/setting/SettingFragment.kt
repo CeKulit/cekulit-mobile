@@ -11,8 +11,8 @@ import androidx.fragment.app.viewModels
 import com.bangkit.cekulit.R
 import com.bangkit.cekulit.databinding.FragmentSettingBinding
 import com.bangkit.cekulit.ui.ViewModelFactory
+import com.bangkit.cekulit.ui.auth.reset.otp.OtpActivity.Companion.NAME_USER
 import com.bangkit.cekulit.ui.help.HelpActivity
-import com.bangkit.cekulit.ui.home.HomeFragment.Companion.NAME_USER
 
 class SettingFragment : Fragment() {
 

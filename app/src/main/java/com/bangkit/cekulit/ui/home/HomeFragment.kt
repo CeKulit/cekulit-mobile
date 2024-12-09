@@ -2,7 +2,6 @@ package com.bangkit.cekulit.ui.home
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +14,7 @@ import com.bangkit.cekulit.data.response.ProductResponseItem
 import com.bangkit.cekulit.databinding.FragmentHomeBinding
 import com.bangkit.cekulit.ui.ViewModelFactory
 import com.bangkit.cekulit.ui.auth.login.LoginActivity
+import com.bangkit.cekulit.ui.auth.reset.otp.OtpActivity.Companion.NAME_USER
 import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
@@ -105,7 +105,5 @@ class HomeFragment : Fragment() {
         }
     }
 
-    companion object {
-        const val NAME_USER = "name"
-    }
+
 }

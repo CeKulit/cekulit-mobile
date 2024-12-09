@@ -21,15 +21,20 @@
         android:theme="@style/Theme.CeKulit"
         tools:targetApi="31">
         <activity
+            android:name=".ui.auth.reset.reset.ResetPasswordActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            />
+        <activity
             android:name=".ui.skincare.SkincareActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.auth.reset.otp.OtpActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.auth.reset.ForgetPasswordActivity"
+            android:name=".ui.auth.reset.forget.ForgetPasswordActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity

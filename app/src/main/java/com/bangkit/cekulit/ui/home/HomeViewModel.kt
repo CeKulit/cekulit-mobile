@@ -31,7 +31,7 @@ class HomeViewModel(private val authRepository: AuthRepository) : ViewModel() {
         viewModelScope.launch {
             _isLoading.value = true
             try {
-                val response = ApiConfig.getApiService(":4000").getProducts("Bearer ${authToken.value!!}")
+                val response = ApiConfig.getApiService(":3000").getProducts("Bearer ${authToken.value!!}")
                 _isLoading.value = false
 
                 _product.value = response

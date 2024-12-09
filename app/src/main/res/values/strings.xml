@@ -51,6 +51,9 @@
 
     <string name="tv_title_sub_forget_password">Jangan khawatir! silahkan masukan kembali email kamu untuk dikirim otp ke email tersebut.</string>
     <string name="btn_continue">Lanjutkan</string>
+    
+    <string name="tv_title_reset_password">Password Baru</string>
+    <string name="tv_title_sub_reset_password">Buat password baru anda!</string>
 
     <string name="tv_result">Kondisi kulit kamu saat ini</string>
     <string name="tv_skin_type">Tipe Kulit</string>
@@ -61,7 +64,7 @@
     <string name="btn_routine">Yuk, rutin pakai skincare!</string>
 
     <string name="tv_title_skincare">Rawat kulit kamu dengan skincare routine ini!</string>
-    
+
     <string name="tv_morning_skincare">Skincare Pagi</string>
     <string name="tv_night_skincare">Skincare Malam</string>
     <string name="btn_search_redirect">Search in Tokopedia</string>
