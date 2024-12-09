@@ -13,6 +13,7 @@ import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Multipart
 import retrofit2.http.POST
+import retrofit2.http.PUT
 import retrofit2.http.Part
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -54,10 +55,21 @@ interface ApiService {
         @Field("password") password: String
     ): LoginResponse
 
+
+
     @GET("profile")
     suspend fun getProfile(
         @Header("Authorization") token: String,
     ): ProfileResponse
+
+    @FormUrlEncoded
+    @PUT("profile")
+    suspend fun editProfile(
+        @Header("Authorization") token: String,
+        @Field("name") name: String,
+        @Field("age") age: String, //string dulu gan
+        @Field("gender") gender: String, //string dulu gan
+        ): MessageResponse
 
     @GET("data")
     suspend fun getProducts(

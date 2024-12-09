@@ -7,6 +7,7 @@ import com.bangkit.cekulit.data.AuthRepository
 import com.bangkit.cekulit.data.ProductRepository
 import com.bangkit.cekulit.di.Injection
 import com.bangkit.cekulit.ui.auth.login.LoginViewModel
+import com.bangkit.cekulit.ui.auth.reset.edit.EditProfileViewModel
 import com.bangkit.cekulit.ui.detail.product.DetailProductViewModel
 import com.bangkit.cekulit.ui.favorite.FavoriteViewModel
 import com.bangkit.cekulit.ui.home.HomeViewModel
@@ -35,6 +36,9 @@ class ViewModelFactory(private val authRepository: AuthRepository, private val p
             }
             modelClass.isAssignableFrom(SkincareViewModel::class.java) -> {
                 SkincareViewModel(authRepository) as T
+            }
+            modelClass.isAssignableFrom(EditProfileViewModel::class.java) -> {
+                EditProfileViewModel(authRepository) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

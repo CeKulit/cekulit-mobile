@@ -12,12 +12,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.bangkit.cekulit.R
 import com.bangkit.cekulit.data.response.ProductResponseItem
 import com.bangkit.cekulit.databinding.FragmentHomeBinding
 import com.bangkit.cekulit.ui.ViewModelFactory
 import com.bangkit.cekulit.ui.auth.login.LoginActivity
+import com.bangkit.cekulit.ui.auth.reset.edit.EditProfileActivity
 import com.bangkit.cekulit.ui.auth.reset.otp.OtpActivity.Companion.NAME_USER
-import com.bangkit.cekulit.ui.setting.SettingViewModel
 import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
@@ -25,10 +26,6 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private val homeViewModel: HomeViewModel by viewModels {
-        ViewModelFactory.getInstance(requireActivity())
-    }
-
-    private val settingViewModel: SettingViewModel by viewModels {
         ViewModelFactory.getInstance(requireActivity())
     }
 
@@ -52,8 +49,11 @@ class HomeFragment : Fragment() {
 
        setupObserver()
 
+        binding.ivPhotoProfile.setOnClickListener {
+            startActivity(Intent(requireContext(), EditProfileActivity::class.java))
+        }
+
         homeViewModel.authToken.observe(viewLifecycleOwner) { token ->
-            Log.e("TOKEN", token )
             if (!token.isNullOrEmpty()) {
                 homeViewModel.getProducts()
                 homeViewModel.getProfile()
@@ -119,12 +119,10 @@ class HomeFragment : Fragment() {
 
     private fun setupObserver() {
         homeViewModel.responseProfile.observe(viewLifecycleOwner){
-            showErrorDialog(it)
+            showErrorDialogToken(getString(R.string.invalid_token))
         }
         homeViewModel.responseProducts.observe(viewLifecycleOwner){
-            showErrorDialog(it).also {
-                settingViewModel.logout()
-            }
+            showErrorDialog(it)
         }
         homeViewModel.isEmpty.observe(viewLifecycleOwner){
             setListEmpty(it)
@@ -140,6 +138,18 @@ class HomeFragment : Fragment() {
             .setMessage(message)
             .setPositiveButton("OK"){ dialog, _ ->
                 dialog.dismiss()
+            }
+            .create()
+            .show()
+    }
+
+    private fun showErrorDialogToken(message: String){
+        AlertDialog.Builder(requireContext())
+            .setTitle("Oops!")
+            .setMessage(message)
+            .setPositiveButton("OK"){ dialog, _ ->
+                dialog.dismiss()
+                homeViewModel.logout()
             }
             .create()
             .show()

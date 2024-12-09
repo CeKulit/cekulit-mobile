@@ -41,6 +41,9 @@
     <string name="tv_name">Nama</string>
     <string name="tv_email">Email</string>
     <string name="tv_password">Password</string>
+    <string name="tv_age">Umur</string>
+    <string name="tv_gender">Jenis kelamin</string>
+    <string name="btn_save">Simpan</string>
 
     <string name="title_login">Hai!</string>
     <string name="title_sub_login">Masuk terlebih dahulu untuk melanjutkan</string>
@@ -51,7 +54,7 @@
 
     <string name="tv_title_sub_forget_password">Jangan khawatir! silahkan masukan kembali email kamu untuk dikirim otp ke email tersebut.</string>
     <string name="btn_continue">Lanjutkan</string>
-    
+
     <string name="tv_title_reset_password">Password Baru</string>
     <string name="tv_title_sub_reset_password">Buat password baru anda!</string>
 
@@ -90,6 +93,9 @@
 
     <string name="tv_title_homepage">Halo!</string>
     <string name="tv_title_sub_homepage">Alvano Hastagina</string>
+
+    <string name="invalid_token">Waktu sesi habis, silahkan masuk kembali.</string>
+
 
     <string name="tv_fav_empty">Kamu belum menambahkan produk apapun ke favorite kamu nih 😊</string>
     <string name="tv_product_empty">Produk yang kamu cari belum ada nih 😢</string>

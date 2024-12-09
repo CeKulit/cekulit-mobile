@@ -28,6 +28,12 @@ class HomeViewModel(private val authRepository: AuthRepository) : ViewModel() {
     private val _isEmpty = MutableLiveData<Boolean>()
     val isEmpty: LiveData<Boolean> = _isEmpty
 
+    fun logout() {
+        viewModelScope.launch {
+            authRepository.logout()
+        }
+    }
+
     val authToken: LiveData<String> = authRepository.getSession().asLiveData()
 
     private val _profile = MutableLiveData<ProfileResponse>()
@@ -37,7 +43,7 @@ class HomeViewModel(private val authRepository: AuthRepository) : ViewModel() {
         _isLoading.value = true
         viewModelScope.launch {
             try {
-                val response = ApiConfig.getApiService(":3000").getProducts("Bearer ${authToken.value!!}", query = query)
+                val response = ApiConfig.getApiService(":3000").getProducts("Bearer ${authToken.value}", query = query)
                 _isLoading.value = false
 
                 _product.value = response
@@ -75,7 +81,6 @@ class HomeViewModel(private val authRepository: AuthRepository) : ViewModel() {
                 val jsonInString = e.response()?.errorBody()?.string()
                 val errorBody = Gson().fromJson(jsonInString, MessageResponse::class.java)
                 _responseProfile.value = errorBody.message!!
-
             }
         }
 
