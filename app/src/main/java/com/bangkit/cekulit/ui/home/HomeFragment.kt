@@ -2,9 +2,11 @@ package com.bangkit.cekulit.ui.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SearchView.OnQueryTextListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -15,6 +17,7 @@ import com.bangkit.cekulit.databinding.FragmentHomeBinding
 import com.bangkit.cekulit.ui.ViewModelFactory
 import com.bangkit.cekulit.ui.auth.login.LoginActivity
 import com.bangkit.cekulit.ui.auth.reset.otp.OtpActivity.Companion.NAME_USER
+import com.bangkit.cekulit.ui.setting.SettingViewModel
 import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
@@ -22,6 +25,10 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private val homeViewModel: HomeViewModel by viewModels {
+        ViewModelFactory.getInstance(requireActivity())
+    }
+
+    private val settingViewModel: SettingViewModel by viewModels {
         ViewModelFactory.getInstance(requireActivity())
     }
 
@@ -43,11 +50,10 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        homeViewModel.isLoading.observe(viewLifecycleOwner){
-            showLoading(it)
-        }
+       setupObserver()
 
         homeViewModel.authToken.observe(viewLifecycleOwner) { token ->
+            Log.e("TOKEN", token )
             if (!token.isNullOrEmpty()) {
                 homeViewModel.getProducts()
                 homeViewModel.getProfile()
@@ -72,6 +78,9 @@ class HomeFragment : Fragment() {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
+                if (newText != null) {
+                    Log.e("onQueryTextChange", newText)
+                }
                 filter(newText ?: "")
                 return true
             }
@@ -85,12 +94,11 @@ class HomeFragment : Fragment() {
     }
 
     private fun showProduct(product: List<ProductResponseItem>) {
-        if (product.isNotEmpty()) {
-            val adapter = ProductAdapter()
-            adapter.submitList(product)
-            binding.rvProduct.adapter = adapter
-            binding.rvProduct.layoutManager = StaggeredGridLayoutManager( 2, StaggeredGridLayoutManager.VERTICAL)
-        }
+        val adapter = ProductAdapter()
+        adapter.submitList(product)
+        binding.rvProduct.adapter = adapter
+        binding.rvProduct.layoutManager = StaggeredGridLayoutManager( 2, StaggeredGridLayoutManager.VERTICAL)
+
     }
 
     private fun showLoading(isLoading: Boolean){
@@ -103,6 +111,38 @@ class HomeFragment : Fragment() {
                 homeViewModel.showFilter(query)
             }
         }
+    }
+
+    private fun setListEmpty(isEmpty: Boolean) {
+        binding.tvEmpty.visibility = if (isEmpty) View.VISIBLE else View.GONE
+    }
+
+    private fun setupObserver() {
+        homeViewModel.responseProfile.observe(viewLifecycleOwner){
+            showErrorDialog(it)
+        }
+        homeViewModel.responseProducts.observe(viewLifecycleOwner){
+            showErrorDialog(it).also {
+                settingViewModel.logout()
+            }
+        }
+        homeViewModel.isEmpty.observe(viewLifecycleOwner){
+            setListEmpty(it)
+        }
+        homeViewModel.isLoading.observe(viewLifecycleOwner){
+            showLoading(it)
+        }
+    }
+
+    private fun showErrorDialog(message: String){
+        AlertDialog.Builder(requireContext())
+            .setTitle("Oops!")
+            .setMessage(message)
+            .setPositiveButton("OK"){ dialog, _ ->
+                dialog.dismiss()
+            }
+            .create()
+            .show()
     }
 
 

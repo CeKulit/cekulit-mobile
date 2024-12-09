@@ -11,6 +11,8 @@ import androidx.fragment.app.viewModels
 import com.bangkit.cekulit.R
 import com.bangkit.cekulit.databinding.FragmentSettingBinding
 import com.bangkit.cekulit.ui.ViewModelFactory
+import com.bangkit.cekulit.ui.auth.login.LoginActivity
+import com.bangkit.cekulit.ui.auth.reset.forget.ForgetPasswordActivity
 import com.bangkit.cekulit.ui.auth.reset.otp.OtpActivity.Companion.NAME_USER
 import com.bangkit.cekulit.ui.help.HelpActivity
 
@@ -43,6 +45,11 @@ class SettingFragment : Fragment() {
 
         binding.llLogout.setOnClickListener {
             showDialog()
+        }
+
+        binding.llForgetPassword.setOnClickListener {
+            val intent = Intent(requireContext(), ForgetPasswordActivity::class.java)
+            startActivity(intent)
         }
 
         val username = requireActivity().intent.getStringExtra(NAME_USER)

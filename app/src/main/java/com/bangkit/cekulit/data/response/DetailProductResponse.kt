@@ -4,30 +4,26 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
-data class DetailResponse(
-
-	@field:SerializedName("error")
-	val error: Boolean? = null,
-
-	@field:SerializedName("message")
-	val message: String? = null,
-
-	@field:SerializedName("story")
-	val story: Story? = null
-)
 @Entity(tableName = "products")
-data class Story(
+data class DetailProductResponse(
 
 	@PrimaryKey
-	@field:SerializedName("id")
-	val id: String,
+	@field:SerializedName("desc")
+	val desc: String,
 
-	@field:SerializedName("photoUrl")
-	val photoUrl: String,
+	@field:SerializedName("title")
+	val title: String? = null,
 
-	@field:SerializedName("name")
-	val name: String? = null,
+	@field:SerializedName("poster")
+	val poster: String,
 
-	@field:SerializedName("description")
-	val description: String? = null,
+	@field:SerializedName("stars")
+	val stars: String,
+
+	@field:SerializedName("reviews_count")
+	val reviewsCount: String,
+
+	@field:SerializedName("link")
+	val link: String,
+
 )

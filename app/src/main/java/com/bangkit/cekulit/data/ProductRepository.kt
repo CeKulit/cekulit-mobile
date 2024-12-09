@@ -1,25 +1,25 @@
 package com.bangkit.cekulit.data
 
 import androidx.lifecycle.LiveData
-import com.bangkit.cekulit.data.response.Story
+import com.bangkit.cekulit.data.response.DetailProductResponse
 import com.bangkit.cekulit.data.room.ProductsDao
 
 class ProductRepository(private val productsDao: ProductsDao) {
 
-    fun getListFavProducts(): LiveData<List<Story>> {
+    fun getListFavProducts(): LiveData<List<DetailProductResponse>> {
         return productsDao.getListFavProducts()
     }
 
-    fun getProductById(id: String): LiveData<Story>{
-        return productsDao.getProductById(id)
+    fun getProductByDesc(desc: String): LiveData<DetailProductResponse>{
+        return productsDao.getProductByDesc(desc)
     }
 
-    suspend fun setFavProduct(products: List<Story>){
+    suspend fun setFavProduct(products: List<DetailProductResponse>){
         productsDao.insertProduct(products)
     }
 
-    suspend fun deleteProductById(id: String){
-        productsDao.deleteById(id)
+    suspend fun deleteProductByDesc(desc: String){
+        productsDao.deleteByDesc(desc)
     }
 
     companion object {

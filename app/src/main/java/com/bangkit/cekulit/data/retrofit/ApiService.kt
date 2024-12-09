@@ -1,6 +1,6 @@
 package com.bangkit.cekulit.data.retrofit
 
-import com.bangkit.cekulit.data.response.DetailResponse
+import com.bangkit.cekulit.data.response.DetailProductResponse
 import com.bangkit.cekulit.data.response.FileUploadResponse
 import com.bangkit.cekulit.data.response.LoginResponse
 import com.bangkit.cekulit.data.response.MessageResponse
@@ -65,11 +65,11 @@ interface ApiService {
         @Query("q") query: String? = null
     ): List<ProductResponseItem>
 
-    @GET("stories/{id}")
+    @GET("data/{desc}")
     suspend fun getDetailProduct(
         @Header("Authorization") token: String,
-        @Path("id") id: String
-    ): DetailResponse
+        @Path("desc") desc: String
+    ): DetailProductResponse
 
     @Multipart
     @POST("/predict")

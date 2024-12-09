@@ -5,19 +5,19 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.bangkit.cekulit.data.response.Story
+import com.bangkit.cekulit.data.response.DetailProductResponse
 
 @Dao
 interface ProductsDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insertProduct(product: List<Story>)
+    suspend fun insertProduct(product: List<DetailProductResponse>)
 
-    @Query("SELECT * FROM products WHERE id = :id")
-    fun getProductById(id: String): LiveData<Story>
+    @Query("SELECT * FROM products WHERE `desc` = :id")
+    fun getProductByDesc(id: String): LiveData<DetailProductResponse>
 
     @Query("SELECT * FROM products")
-    fun getListFavProducts(): LiveData<List<Story>>
+    fun getListFavProducts(): LiveData<List<DetailProductResponse>>
 
-    @Query("DELETE FROM products WHERE id = :id")
-    suspend fun deleteById(id: String)
+    @Query("DELETE FROM products WHERE `desc` = :id")
+    suspend fun deleteByDesc(id: String)
 }

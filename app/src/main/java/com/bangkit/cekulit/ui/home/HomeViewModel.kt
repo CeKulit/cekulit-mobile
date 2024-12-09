@@ -7,9 +7,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.bangkit.cekulit.data.AuthRepository
+import com.bangkit.cekulit.data.response.MessageResponse
 import com.bangkit.cekulit.data.response.ProductResponseItem
 import com.bangkit.cekulit.data.response.ProfileResponse
 import com.bangkit.cekulit.data.retrofit.ApiConfig
+import com.google.gson.Gson
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import java.net.SocketTimeoutException
@@ -19,6 +21,10 @@ class HomeViewModel(private val authRepository: AuthRepository) : ViewModel() {
     val product: LiveData<List<ProductResponseItem>> = _product
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
+    private val _responseProfile = MutableLiveData<String>()
+    val responseProfile: LiveData<String> = _responseProfile
+    private val _responseProducts = MutableLiveData<String>()
+    val responseProducts: LiveData<String> = _responseProducts
     private val _isEmpty = MutableLiveData<Boolean>()
     val isEmpty: LiveData<Boolean> = _isEmpty
 
@@ -28,10 +34,10 @@ class HomeViewModel(private val authRepository: AuthRepository) : ViewModel() {
     val profile: LiveData<ProfileResponse> = _profile
 
     fun getProducts(query: String? = null){
+        _isLoading.value = true
         viewModelScope.launch {
-            _isLoading.value = true
             try {
-                val response = ApiConfig.getApiService(":3000").getProducts("Bearer ${authToken.value!!}")
+                val response = ApiConfig.getApiService(":3000").getProducts("Bearer ${authToken.value!!}", query = query)
                 _isLoading.value = false
 
                 _product.value = response
@@ -41,10 +47,14 @@ class HomeViewModel(private val authRepository: AuthRepository) : ViewModel() {
             }
             catch (e: SocketTimeoutException) {
                 Log.e("API_ERROR", "Request timed out!")
+                _responseProducts.value = "Request timed out!"
             }
             catch (e: HttpException){
                 _isLoading.value = false
-                Log.e("getStories", e.message.toString())
+                val jsonInString = e.response()?.errorBody()?.string()
+                val errorBody = Gson().fromJson(jsonInString, MessageResponse::class.java)
+                _responseProducts.value = errorBody.message!!
+
             }
         }
 
@@ -58,10 +68,14 @@ class HomeViewModel(private val authRepository: AuthRepository) : ViewModel() {
                 _profile.value = response
             }
             catch (e: SocketTimeoutException) {
-                Log.e("PROFILE", "Request timed out!")
+                Log.e("API_ERROR", "Request timed out!")
             }
             catch (e: HttpException){
-                Log.e("getProfile", e.message.toString())
+                _isLoading.value = false
+                val jsonInString = e.response()?.errorBody()?.string()
+                val errorBody = Gson().fromJson(jsonInString, MessageResponse::class.java)
+                _responseProfile.value = errorBody.message!!
+
             }
         }
 

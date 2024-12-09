@@ -31,7 +31,7 @@ class DetailProductActivity : AppCompatActivity() {
         binding = ActivityDetailProductBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val idProduct = intent.getStringExtra(ID_PRODUCT)
+        val descProduct = intent.getStringExtra(DESC_PRODUCT)
 
         detailViewModel.isLoading.observe(this){
             showLoading(it)
@@ -44,12 +44,12 @@ class DetailProductActivity : AppCompatActivity() {
                 startActivity(intent)
                 finish()
             } else {
-                detailViewModel.getDetailProduct(idProduct!!)
-                setupView(idProduct)
+                detailViewModel.getDetailProduct(descProduct!!)
+                setupView(descProduct)
             }
         }
 
-        detailViewModel.getProductById(idProduct!!).observe(this) { result ->
+        detailViewModel.getProductByDesc(descProduct!!).observe(this) { result ->
             if (result != null) {
                 isFav = true
                 binding.fabFavorite.setImageResource(R.drawable.ic_favorite_fill)
@@ -63,11 +63,11 @@ class DetailProductActivity : AppCompatActivity() {
     private fun setupView(id: String){
         detailViewModel.products.observe(this){ product ->
             Glide.with(binding.ivDetailPhoto.context)
-                .load(product.photoUrl)
+                .load(product.poster)
                 .into(binding.ivDetailPhoto)
             binding.apply {
-                tvDetailName.text = product.name
-                tvDetailDescription.text = product.description
+                tvDetailName.text = product.title
+                tvDetailDescription.text = product.desc
                 fabFavorite.setOnClickListener {
                     if (isFav) {
                         Toast.makeText(this@DetailProductActivity, R.string.toast_delete_fav, Toast.LENGTH_SHORT).show()
@@ -93,6 +93,6 @@ class DetailProductActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val ID_PRODUCT = "id"
+        const val DESC_PRODUCT = "desc"
     }
 }
