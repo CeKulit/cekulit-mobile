@@ -20,11 +20,11 @@ class DetailSkincareViewModel: ViewModel() {
     val isLoading: LiveData<Boolean> = _isLoading
 
 
-    fun getDetailProduct(){
+    fun getDetailProduct(type: String){
         viewModelScope.launch {
             _isLoading.value = true
             try {
-                val response = ApiConfig.getApiService(":3000").getDetailSkincare()
+                val response = ApiConfig.getApiService(":3000").getDetailSkincare(type)
                 _isLoading.value = false
 
                 _skincare.value = response.toMap()

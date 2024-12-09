@@ -80,8 +80,9 @@ interface ApiService {
     suspend fun getListSkincare(
     ): List<ListSkincareResponse>
 
-    @GET("sc/detail/berminyak/day")
+    @GET("sc/detail/{type}/day")
     suspend fun getDetailSkincare(
+        @Path("type") type: String
     ): DetailSkincareResponse
 
 

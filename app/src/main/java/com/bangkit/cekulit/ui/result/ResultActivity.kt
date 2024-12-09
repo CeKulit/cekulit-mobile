@@ -9,7 +9,8 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.toUri
 import com.bangkit.cekulit.databinding.ActivityResultBinding
-import com.bangkit.cekulit.ui.camera.CameraActivity
+import com.bangkit.cekulit.ui.camera.CameraActivity.Companion.EXTRA_CAMERAX_IMAGE
+import com.bangkit.cekulit.ui.camera.CameraActivity.Companion.EXTRA_RESULT_ANALYSIS
 import com.bangkit.cekulit.ui.skincare.SkincareActivity
 
 class ResultActivity : AppCompatActivity() {
@@ -24,13 +25,15 @@ class ResultActivity : AppCompatActivity() {
         binding = ActivityResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        currentImageUri = intent.getStringExtra(CameraActivity.EXTRA_CAMERAX_IMAGE)?.toUri()
-        resultAnalysis = intent.getStringExtra(CameraActivity.EXTRA_RESULT_ANALYSIS)
+        currentImageUri = intent.getStringExtra(EXTRA_CAMERAX_IMAGE)?.toUri()
+        resultAnalysis = intent.getStringExtra(EXTRA_RESULT_ANALYSIS)
 
         showImage()
 
         binding.btnRoutine.setOnClickListener {
-            startActivity(Intent(this@ResultActivity, SkincareActivity::class.java))
+            val intent = Intent(this@ResultActivity, SkincareActivity::class.java)
+            intent.putExtra(EXTRA_RESULT_ANALYSIS, resultAnalysis)
+            startActivity(intent)
         }
 
         resultAnalysis?.let {

@@ -8,11 +8,12 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.cekulit.data.response.ListSkincareResponse
 import com.bangkit.cekulit.databinding.ItemSkincareBinding
+import com.bangkit.cekulit.ui.camera.CameraActivity.Companion.EXTRA_RESULT_ANALYSIS
 import com.bangkit.cekulit.ui.detail.skincare.DetailSkincareActivity
 import com.bangkit.cekulit.ui.detail.skincare.DetailSkincareActivity.Companion.TITLE_SKINCARE
 import com.bumptech.glide.Glide
 
-class SkincareAdapter: ListAdapter<ListSkincareResponse, SkincareAdapter.MyViewHolder>(
+class SkincareAdapter(private val analysisResult: String): ListAdapter<ListSkincareResponse, SkincareAdapter.MyViewHolder>(
     DIFF_CALLBACK
 ) {
     inner class MyViewHolder(private val binding: ItemSkincareBinding): RecyclerView.ViewHolder(binding.root){
@@ -24,6 +25,7 @@ class SkincareAdapter: ListAdapter<ListSkincareResponse, SkincareAdapter.MyViewH
             binding.tvTitleSkincare.text = listSkincare.title
             binding.root.setOnClickListener {
                 val intent = Intent(binding.root.context, DetailSkincareActivity::class.java)
+                intent.putExtra(EXTRA_RESULT_ANALYSIS, analysisResult)
                 intent.putExtra(TITLE_SKINCARE, listSkincare.title)
                 binding.root.context.startActivity(intent)
             }

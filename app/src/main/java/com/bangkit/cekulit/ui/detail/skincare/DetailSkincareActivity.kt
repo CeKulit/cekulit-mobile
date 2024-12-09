@@ -6,6 +6,7 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.bangkit.cekulit.databinding.ActivityDetailSkincareBinding
+import com.bangkit.cekulit.ui.camera.CameraActivity.Companion.EXTRA_RESULT_ANALYSIS
 import com.bumptech.glide.Glide
 
 class DetailSkincareActivity : AppCompatActivity() {
@@ -23,11 +24,11 @@ class DetailSkincareActivity : AppCompatActivity() {
 
         val titleSkincare = intent.getStringExtra(TITLE_SKINCARE)
 
-        Log.e("INTENT ", "$titleSkincare")
+        val typeSkinResult = intent.getStringExtra(EXTRA_RESULT_ANALYSIS)
 
 
         titleSkincare?.let {
-            detailViewModel.getDetailProduct()
+            detailViewModel.getDetailProduct(typeSkinResult!!)
             setupView(titleSkincare)
         }
 
@@ -41,9 +42,6 @@ class DetailSkincareActivity : AppCompatActivity() {
     private fun setupView(title: String) {
         detailViewModel.skincare.observe(this) { skincare ->
             val selectedItem = skincare[title]
-            Log.e("selected ", "$selectedItem")
-            Log.e("skincare ", "$skincare")
-            Log.e("title ", "$title")
             selectedItem?.let { item ->
                 Glide.with(binding.ivDetailPhoto.context)
                     .load(item.photoUrl)

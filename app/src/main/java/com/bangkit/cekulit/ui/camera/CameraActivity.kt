@@ -210,7 +210,7 @@ class CameraActivity : AppCompatActivity() {
 
             lifecycleScope.launch {
                 try {
-                    val apiService = ApiConfig.getApiService(":4000")
+                    val apiService = ApiConfig.getApiService(":5000")
                     val successResponse = apiService.uploadImage(multipartBody)
                     with(successResponse.data) {
                         val intent = Intent(this@CameraActivity, ResultActivity::class.java)
@@ -221,7 +221,7 @@ class CameraActivity : AppCompatActivity() {
                         }
 
                         intent.putExtra(EXTRA_CAMERAX_IMAGE, imageUri.toString())
-                        intent.putExtra(EXTRA_RESULT_ANALYSIS, "$confidenceScore $result")
+                        intent.putExtra(EXTRA_RESULT_ANALYSIS, "$result")
 
                         startActivity(intent)
                         finish()
