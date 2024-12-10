@@ -58,6 +58,9 @@
 
     <string name="tv_title_reset_password">Password Baru</string>
     <string name="tv_title_sub_reset_password">Buat password baru anda!</string>
+    
+    <string name="tv_title_history">Riwayat</string>
+    <string name="tv_title_sub_history">Riwayat cek kulit wajah kamu</string>
 
     <string name="tv_result">Kondisi kulit kamu saat ini</string>
     <string name="tv_skin_type">Tipe Kulit</string>
@@ -99,6 +102,7 @@
 
 
     <string name="tv_fav_empty">Kamu belum menambahkan produk apapun ke favorite kamu nih 😊</string>
+    <string name="tv_history_empty">Kamu belum pernah scan wajah kamu, ayo cek sekarang juga!</string>
     <string name="tv_product_empty">Produk yang kamu cari belum ada nih 😢</string>
 
     <string name="tv_description">Deskripsi</string>

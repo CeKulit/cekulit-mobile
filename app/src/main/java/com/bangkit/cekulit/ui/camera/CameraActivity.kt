@@ -13,8 +13,8 @@ import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Toast
-import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.CameraSelector
@@ -27,10 +27,13 @@ import androidx.lifecycle.lifecycleScope
 import com.bangkit.cekulit.R
 import com.bangkit.cekulit.data.response.FileUploadResponse
 import com.bangkit.cekulit.data.retrofit.ApiConfig
+import com.bangkit.cekulit.data.room.history.HistoryEntity
 import com.bangkit.cekulit.databinding.ActivityCameraBinding
 import com.bangkit.cekulit.helper.Utils.createCustomTempFile
 import com.bangkit.cekulit.helper.Utils.reduceFileImage
 import com.bangkit.cekulit.helper.Utils.uriToFile
+import com.bangkit.cekulit.ui.ViewModelFactory
+import com.bangkit.cekulit.ui.history.HistoryViewModel
 import com.bangkit.cekulit.ui.result.ResultActivity
 import com.google.gson.Gson
 import kotlinx.coroutines.launch
@@ -47,6 +50,12 @@ class CameraActivity : AppCompatActivity() {
     private var currentImageUri: Uri? = null
 
     private var imageCapture: ImageCapture? = null
+
+    private lateinit var historyEntity: HistoryEntity
+
+    private val historyViewModel by viewModels<HistoryViewModel>{
+        ViewModelFactory.getInstance(this)
+    }
 
 
     @RequiresApi(Build.VERSION_CODES.Q)
@@ -219,6 +228,13 @@ class CameraActivity : AppCompatActivity() {
                         } else {
                             showToast("Model is predicted successfully but under threshold.")
                         }
+
+                        val historyEntity = HistoryEntity(
+                            result = result!!,
+                            image = imageUri.toString(),
+                            confidenceScore = confidenceScore!!
+                        )
+                        historyViewModel.setListHistory(listOf(historyEntity))
 
                         intent.putExtra(EXTRA_CAMERAX_IMAGE, imageUri.toString())
                         intent.putExtra(EXTRA_RESULT_ANALYSIS, "$result")

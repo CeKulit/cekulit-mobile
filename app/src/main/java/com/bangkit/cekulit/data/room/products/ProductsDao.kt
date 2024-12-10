@@ -1,4 +1,4 @@
-package com.bangkit.cekulit.data.room
+package com.bangkit.cekulit.data.room.products
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao

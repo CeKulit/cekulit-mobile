@@ -1,4 +1,4 @@
-package com.bangkit.cekulit.data.room
+package com.bangkit.cekulit.data.room.products
 
 import android.content.Context
 import androidx.room.Database

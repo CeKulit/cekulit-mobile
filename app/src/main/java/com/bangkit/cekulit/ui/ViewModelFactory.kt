@@ -4,17 +4,19 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.bangkit.cekulit.data.AuthRepository
+import com.bangkit.cekulit.data.HistoryRepository
 import com.bangkit.cekulit.data.ProductRepository
 import com.bangkit.cekulit.di.Injection
 import com.bangkit.cekulit.ui.auth.login.LoginViewModel
 import com.bangkit.cekulit.ui.auth.reset.edit.EditProfileViewModel
 import com.bangkit.cekulit.ui.detail.product.DetailProductViewModel
 import com.bangkit.cekulit.ui.favorite.FavoriteViewModel
+import com.bangkit.cekulit.ui.history.HistoryViewModel
 import com.bangkit.cekulit.ui.home.HomeViewModel
 import com.bangkit.cekulit.ui.setting.SettingViewModel
 import com.bangkit.cekulit.ui.skincare.SkincareViewModel
 
-class ViewModelFactory(private val authRepository: AuthRepository, private val productRepository: ProductRepository) : ViewModelProvider.NewInstanceFactory() {
+class ViewModelFactory(private val authRepository: AuthRepository, private val productRepository: ProductRepository, private val historyRepository: HistoryRepository) : ViewModelProvider.NewInstanceFactory() {
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
@@ -40,6 +42,9 @@ class ViewModelFactory(private val authRepository: AuthRepository, private val p
             modelClass.isAssignableFrom(EditProfileViewModel::class.java) -> {
                 EditProfileViewModel(authRepository) as T
             }
+            modelClass.isAssignableFrom(HistoryViewModel::class.java) -> {
+                HistoryViewModel(historyRepository) as T
+            }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
     }
@@ -52,7 +57,7 @@ class ViewModelFactory(private val authRepository: AuthRepository, private val p
         fun getInstance(context: Context): ViewModelFactory {
             if (INSTANCE == null) {
                 synchronized(ViewModelFactory::class.java) {
-                    INSTANCE = ViewModelFactory(Injection.provideAuthRepository(context), Injection.provideProductRepository(context))
+                    INSTANCE = ViewModelFactory(Injection.provideAuthRepository(context), Injection.provideProductRepository(context), Injection.provideHistoryRepository(context))
                 }
             }
             return INSTANCE as ViewModelFactory

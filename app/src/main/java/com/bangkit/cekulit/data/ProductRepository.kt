@@ -2,7 +2,7 @@ package com.bangkit.cekulit.data
 
 import androidx.lifecycle.LiveData
 import com.bangkit.cekulit.data.response.DetailProductResponse
-import com.bangkit.cekulit.data.room.ProductsDao
+import com.bangkit.cekulit.data.room.products.ProductsDao
 
 class ProductRepository(private val productsDao: ProductsDao) {
 

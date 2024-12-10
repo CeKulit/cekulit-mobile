@@ -1,31 +1,55 @@
 package com.bangkit.cekulit.ui.history
 
-import androidx.fragment.app.viewModels
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.bangkit.cekulit.R
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.bangkit.cekulit.databinding.FragmentHistoryBinding
+import com.bangkit.cekulit.ui.ViewModelFactory
 
 class HistoryFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = HistoryFragment()
+    private var _binding: FragmentHistoryBinding? = null
+    private val binding get() = _binding
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        _binding = FragmentHistoryBinding.inflate(layoutInflater, container, false)
+        return binding?.root
     }
 
-    private val viewModel: HistoryViewModel by viewModels()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+        val viewModel: HistoryViewModel by viewModels {
+            ViewModelFactory.getInstance(requireActivity())
+        }
 
-        // TODO: Use the ViewModel
+
+
+        val historyAdapter = HistoryAdapter()
+
+
+        viewModel.getListHistory().observe(viewLifecycleOwner){ result ->
+            historyAdapter.submitList(result)
+            if (result.isNullOrEmpty()){
+                binding?.tvEmpty?.visibility = View.VISIBLE
+            } else {
+                binding?.tvEmpty?.visibility = View.GONE
+            }
+        }
+
+        binding?.rvHistory?.apply {
+            adapter = historyAdapter
+            layoutManager = LinearLayoutManager(requireContext())
+            setHasFixedSize(true)
+        }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return inflater.inflate(R.layout.fragment_history, container, false)
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
