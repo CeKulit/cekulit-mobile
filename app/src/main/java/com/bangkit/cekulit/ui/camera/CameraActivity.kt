@@ -238,6 +238,7 @@ class CameraActivity : AppCompatActivity() {
 
                         intent.putExtra(EXTRA_CAMERAX_IMAGE, imageUri.toString())
                         intent.putExtra(EXTRA_RESULT_ANALYSIS, "$result")
+                        intent.putExtra(EXTRA_DESCRIPTION_ANALYSIS, "$description")
 
                         startActivity(intent)
                         finish()
@@ -276,6 +277,7 @@ class CameraActivity : AppCompatActivity() {
         private const val TAG = "CameraActivity"
         const val EXTRA_CAMERAX_IMAGE = "CameraX Image"
         const val EXTRA_RESULT_ANALYSIS = "Result Analysis"
+        const val EXTRA_DESCRIPTION_ANALYSIS = "Description Analysis"
         const val CAMERAX_RESULT = 200
         private const val REQUIRED_PERMISSION = Manifest.permission.CAMERA
     }

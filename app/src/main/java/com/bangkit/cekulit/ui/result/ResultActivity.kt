@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.toUri
 import com.bangkit.cekulit.databinding.ActivityResultBinding
 import com.bangkit.cekulit.ui.camera.CameraActivity.Companion.EXTRA_CAMERAX_IMAGE
+import com.bangkit.cekulit.ui.camera.CameraActivity.Companion.EXTRA_DESCRIPTION_ANALYSIS
 import com.bangkit.cekulit.ui.camera.CameraActivity.Companion.EXTRA_RESULT_ANALYSIS
 import com.bangkit.cekulit.ui.skincare.SkincareActivity
 
@@ -18,6 +19,7 @@ class ResultActivity : AppCompatActivity() {
 
     private var currentImageUri: Uri? = null
     private var resultAnalysis: String? = null
+    private var descriptionAnalysis: String? = null
 
     @RequiresApi(Build.VERSION_CODES.Q)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,6 +29,7 @@ class ResultActivity : AppCompatActivity() {
 
         currentImageUri = intent.getStringExtra(EXTRA_CAMERAX_IMAGE)?.toUri()
         resultAnalysis = intent.getStringExtra(EXTRA_RESULT_ANALYSIS)
+        descriptionAnalysis = intent.getStringExtra(EXTRA_DESCRIPTION_ANALYSIS)
 
         showImage()
 
@@ -38,6 +41,10 @@ class ResultActivity : AppCompatActivity() {
 
         resultAnalysis?.let {
             binding.tvResult.text = it
+        }
+
+        descriptionAnalysis?.let {
+            binding.tvDescription.text = it
         }
 
     }

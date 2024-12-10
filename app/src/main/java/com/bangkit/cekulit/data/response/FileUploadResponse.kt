@@ -14,6 +14,8 @@ data class Data(
     var id: String? = null,
     @SerializedName("result")
     var result: String? = null,
+    @SerializedName("description")
+    var description: String? = null,
     @SerializedName("confidenceScore")
     var confidenceScore: Double? = null,
     @SerializedName("isAboveThreshold")

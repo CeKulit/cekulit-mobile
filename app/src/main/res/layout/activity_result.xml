@@ -35,7 +35,6 @@
         android:id="@+id/tv_result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/tv_oil_type"
         android:textStyle="bold"
         android:textSize="@dimen/title_menu"
         app:layout_constraintStart_toStartOf="parent"
@@ -65,10 +64,9 @@
 
 
     <TextView
-        android:id="@+id/tv_overview"
+        android:id="@+id/tv_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/tv_overview"
         android:paddingHorizontal="32dp"
         android:gravity="center"
         android:textSize="@dimen/desc_menu"
@@ -87,7 +85,7 @@
         android:backgroundTint="@color/pink"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_overview"
+        app:layout_constraintTop_toBottomOf="@id/tv_description"
         app:layout_constraintBottom_toBottomOf="parent"
         />
 
