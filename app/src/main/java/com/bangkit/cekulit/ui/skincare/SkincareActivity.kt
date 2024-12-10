@@ -23,24 +23,45 @@ class SkincareActivity : AppCompatActivity() {
 
         skincareViewModel.authToken.observe(this){ token ->
             if(!token.isNullOrEmpty()){
-                skincareViewModel.getSkincare()
+                skincareViewModel.getDaySkincare()
+                skincareViewModel.getNightSkincare()
             }
         }
 
-        skincareViewModel.skincare.observe(this){
-            showSkincare(it)
+        skincareViewModel.daySkincare.observe(this){ skincare ->
+            if(skincare != null){
+                skincareViewModel.day.observe(this){
+                    showDaySkincare(skincare, it)
+                }
+            }
+        }
+
+        skincareViewModel.nightSkincare.observe(this){ skincare ->
+            if(skincare != null){
+                skincareViewModel.night.observe(this){
+                    showNightSkincare(skincare, it)
+                }
+            }
         }
 
     }
 
-    private fun showSkincare(skincare: List<ListSkincareResponse>) {
+    private fun showDaySkincare(skincare: List<ListSkincareResponse>, timeSkincare: String) {
         if (skincare.isNotEmpty()) {
             val resultAnalysis = intent.getStringExtra(EXTRA_RESULT_ANALYSIS)
-            val adapter = SkincareAdapter(resultAnalysis!!)
+            val adapter = SkincareAdapter(resultAnalysis!!, timeSkincare)
             adapter.submitList(skincare)
             binding.tvResult.text = resultAnalysis
             binding.rvMorningSkincare.adapter = adapter
             binding.rvMorningSkincare.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        }
+    }
+
+    private fun showNightSkincare(skincare: List<ListSkincareResponse>, timeSkincare: String) {
+        if (skincare.isNotEmpty()) {
+            val resultAnalysis = intent.getStringExtra(EXTRA_RESULT_ANALYSIS)
+            val adapter = SkincareAdapter(resultAnalysis!!, timeSkincare)
+            adapter.submitList(skincare)
             binding.rvNightSkincare.adapter = adapter
             binding.rvNightSkincare.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 

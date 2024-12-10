@@ -26,9 +26,11 @@ class DetailSkincareActivity : AppCompatActivity() {
 
         val typeSkinResult = intent.getStringExtra(EXTRA_RESULT_ANALYSIS)
 
+        val timeSkincare = intent.getStringExtra(TIME_SKINCARE)
+
 
         titleSkincare?.let {
-            detailViewModel.getDetailProduct(typeSkinResult!!)
+            detailViewModel.getDetailProduct(typeSkinResult!!, timeSkincare!!)
             setupView(titleSkincare)
         }
 
@@ -66,5 +68,6 @@ class DetailSkincareActivity : AppCompatActivity() {
 
     companion object {
         const val TITLE_SKINCARE = "title"
+        const val TIME_SKINCARE = "time"
     }
 }

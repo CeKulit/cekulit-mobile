@@ -15,23 +15,30 @@ import retrofit2.HttpException
 import java.net.SocketTimeoutException
 
 class SkincareViewModel(private val authRepository: AuthRepository) : ViewModel() {
-    private val _skincare = MutableLiveData<List<ListSkincareResponse>>()
-    val skincare: LiveData<List<ListSkincareResponse>> = _skincare
+    private val _daySkincare = MutableLiveData<List<ListSkincareResponse>>()
+    val daySkincare: LiveData<List<ListSkincareResponse>> = _daySkincare
+    private val _day = MutableLiveData<String>()
+    val day: LiveData<String> = _day
+
+    private val _nightSkincare = MutableLiveData<List<ListSkincareResponse>>()
+    val nightSkincare: LiveData<List<ListSkincareResponse>> = _nightSkincare
+    private val _night = MutableLiveData<String>()
+    val night: LiveData<String> = _night
+
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
     
 
     val authToken: LiveData<String> = authRepository.getSession().asLiveData()
 
-    fun getSkincare(){
+    fun getDaySkincare(){
         viewModelScope.launch {
             _isLoading.value = true
             try {
-                val response = ApiConfig.getApiService(":3000").getListSkincare()
+                val response = ApiConfig.getApiService(":3000").getListDaySkincare()
                 _isLoading.value = false
-
-                _skincare.value = response
-                Log.e("result skincare", "$response")
+                _day.value = "day"
+                _daySkincare.value = response
 
             }
             catch (e: SocketTimeoutException) {
@@ -39,7 +46,28 @@ class SkincareViewModel(private val authRepository: AuthRepository) : ViewModel(
             }
             catch (e: HttpException){
                 _isLoading.value = false
-                Log.e("getSkincare", e.message.toString())
+                Log.e("getDaySkincare", e.message.toString())
+            }
+        }
+
+    }
+
+    fun getNightSkincare(){
+        viewModelScope.launch {
+            _isLoading.value = true
+            try {
+                val response = ApiConfig.getApiService(":3000").getListNightSkincare()
+                _isLoading.value = false
+                _night.value = "night"
+                _nightSkincare.value = response
+
+            }
+            catch (e: SocketTimeoutException) {
+                Log.e("API_ERROR", "Request timed out!")
+            }
+            catch (e: HttpException){
+                _isLoading.value = false
+                Log.e("getDaySkincare", e.message.toString())
             }
         }
 

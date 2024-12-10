@@ -77,12 +77,18 @@ interface ApiService {
     ): List<ProductResponseItem>
 
     @GET("sc/list/day")
-    suspend fun getListSkincare(
+    suspend fun getListDaySkincare(
     ): List<ListSkincareResponse>
 
-    @GET("sc/detail/{type}/day")
+
+    @GET("sc/list/night")
+    suspend fun getListNightSkincare(
+    ): List<ListSkincareResponse>
+
+    @GET("sc/detail/{type}/{time}")
     suspend fun getDetailSkincare(
-        @Path("type") type: String
+        @Path("type") type: String,
+        @Path("time") time: String
     ): DetailSkincareResponse
 
 
