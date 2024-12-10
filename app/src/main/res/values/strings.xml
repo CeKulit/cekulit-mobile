@@ -44,6 +44,7 @@
     <string name="tv_age">Umur</string>
     <string name="tv_gender">Jenis kelamin</string>
     <string name="btn_save">Simpan</string>
+    <string name="btn_share">Bagikan</string>
 
     <string name="title_login">Hai!</string>
     <string name="title_sub_login">Masuk terlebih dahulu untuk melanjutkan</string>
@@ -109,5 +110,7 @@
 
     <string name="empty_image_warning">Gagal mengambil gambar.</string>
     <string name="empty_camera_warning">Gagal membuka kamera.</string>
+    <string name="tv_ingredient">Bahan</string>
+    <string name="tv_step">Penggunaan</string>
 
 </resources>

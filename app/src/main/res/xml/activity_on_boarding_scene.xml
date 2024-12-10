@@ -355,23 +355,6 @@
             android:alpha="0"
             motion:layout_constraintTop_toTopOf="parent"
             motion:layout_constraintStart_toStartOf="parent" />
-        <Constraint
-            android:id="@+id/btn_login"
-            motion:layout_constraintEnd_toEndOf="parent"
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:alpha="0"
-            motion:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="-32dp"
-            motion:layout_constraintBottom_toBottomOf="parent" />
-        <Constraint
-            android:id="@+id/btn_signup"
-            motion:layout_constraintEnd_toEndOf="parent"
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:alpha="0"
-            motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintBottom_toBottomOf="parent" />
     </ConstraintSet>
     <Transition
         motion:constraintSetStart="@+id/menu3"
@@ -519,6 +502,6 @@
         motion:constraintSetEnd="@+id/auth"
         motion:duration="2000">
         <OnClick motion:targetId="@id/btn_start"
-            motion:clickAction="jumpToEnd" />
+            motion:clickAction="transitionToEnd" />
     </Transition>
 </MotionScene>

@@ -1,7 +1,6 @@
 package com.bangkit.cekulit.ui.detail.skincare
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -39,6 +38,8 @@ class DetailSkincareActivity : AppCompatActivity() {
             showLoading(it)
         }
 
+
+
     }
 
     private fun setupView(title: String) {
@@ -49,8 +50,20 @@ class DetailSkincareActivity : AppCompatActivity() {
                     .load(item.photoUrl)
                     .into(binding.ivDetailPhoto)
                 binding.apply {
-                    tvDetailName.text = item.title
-                    tvDetailDescription.text = item.desc
+                    tvDetailTitle.text = item.title
+                    tvDetailResult.text = item.desc
+
+                    btnDescription.setOnClickListener {
+                        tvDetailResult.text = item.desc
+                    }
+
+                    btnIngredient.setOnClickListener {
+                        tvDetailResult.text = item.ingredients
+                    }
+
+                    btnStep.setOnClickListener {
+                        tvDetailResult.text = item.step
+                    }
                 }
             }
         }
