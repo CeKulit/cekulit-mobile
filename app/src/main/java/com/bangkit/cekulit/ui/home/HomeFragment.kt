@@ -151,6 +151,7 @@ class HomeFragment : Fragment() {
                 dialog.dismiss()
                 homeViewModel.logout()
             }
+            .setCancelable(false)
             .create()
             .show()
     }
