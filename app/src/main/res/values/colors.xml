@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="outline_color">#FF0000</color> <!-- Ganti dengan warna outline yang diinginkan -->
     <color name="pink">#C9184A</color>
     <color name="pink_splash">#FFB3C1</color>
     <color name="pinky">#FFD1DA</color>

@@ -9,11 +9,11 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.bangkit.cekulit.ui.main.MainActivity
-import com.bangkit.cekulit.databinding.ActivityOnBoardingBinding
 import com.bangkit.cekulit.ui.ViewModelFactory
 import com.bangkit.cekulit.ui.auth.login.LoginActivity
 import com.bangkit.cekulit.ui.auth.login.LoginViewModel
 import com.bangkit.cekulit.ui.auth.signup.SignupActivity
+import com.bangkit.cekulit.databinding.ActivityOnBoardingBinding
 
 class OnboardingActivity : AppCompatActivity() {
     private val loginViewModel by viewModels<LoginViewModel> {
