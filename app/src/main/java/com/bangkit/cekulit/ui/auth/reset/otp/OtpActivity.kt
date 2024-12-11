@@ -18,6 +18,8 @@ class OtpActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOtpBinding
     private val otpViewModel by viewModels<OtpViewModel>()
 
+
+
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,9 +28,8 @@ class OtpActivity : AppCompatActivity() {
 
         setupObserver()
 
-        val emailUser = intent.getStringExtra(EMAIL_USER)
         val emailForget = intent.getStringExtra(EMAIL_FORGET)
-
+        val emailUser = intent.getStringExtra(EMAIL_USER)
 
         if (emailForget != null) {
             binding.tvTitleSubOtp.text = getString(R.string.tv_title_sub_otp) + emailForget
@@ -54,7 +55,11 @@ class OtpActivity : AppCompatActivity() {
         }
 
         otpViewModel.isSuccess.observe(this){ response ->
-            showSuccessDialog(response.message!!, emailForget!!)
+            if(emailForget != null){
+                showSuccessDialog(response.message!!, emailForget)
+            } else {
+                showSuccessDialog(response.message!!, null)
+            }
         }
 
         otpViewModel.responseOtp.observe(this){ responseMessage ->
@@ -80,14 +85,13 @@ class OtpActivity : AppCompatActivity() {
         finish()
     }
 
-    private fun showSuccessDialog(message: String, bundle: String) {
+    private fun showSuccessDialog(message: String, bundle: String?) {
         AlertDialog.Builder(this)
             .setTitle("Yeay!")
             .setMessage(message)
             .setPositiveButton("OK") { dialog, _ ->
                 dialog.dismiss()
-                val forgetEmail = intent.getStringExtra(EMAIL_FORGET)
-                if(forgetEmail != null) {
+                if(bundle != null) {
                     moveResetActivity(bundle)
                 } else {
                     moveLoginActivity()
