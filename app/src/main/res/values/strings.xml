@@ -1,12 +1,12 @@
 <resources>
     <string name="app_name">CeKulit</string>
     <string name="onboarding">Onboarding</string>
-    <string name="nav_title_home">Beranda</string>
+    <string name="nav_title_home">Home</string>
     <string name="nav_title_scan">Scan</string>
     <string name="nav_title_profile">Profil</string>
-    <string name="nav_title_favorite">Favorit</string>
-    <string name="nav_title_history">Riwayat</string>
-    <string name="nav_title_setting">Pengaturan</string>
+    <string name="nav_title_favorite">Favorite</string>
+    <string name="nav_title_history">History</string>
+    <string name="nav_title_setting">Settings</string>
     <string name="tv_username">Alvano Hastagina</string>
 
     <string name="title_menu_1">Selamat Datang di CeKulit</string>

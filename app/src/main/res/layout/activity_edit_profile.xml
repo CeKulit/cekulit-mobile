@@ -40,6 +40,7 @@
             android:layout_marginTop="24dp"
             android:textColor="@color/black"
             android:text="@string/tv_name"
+            android:fontFamily="@font/jakartam"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iv_photo_profile" />
 
@@ -58,7 +59,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingVertical="8dp"
-                android:background="@color/gray"
+                android:background="@drawable/rounded_background"
                 android:inputType="text"
                 tools:ignore="SpeakableTextPresentCheck" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -71,6 +72,7 @@
             android:layout_marginTop="24dp"
             android:textColor="@color/black"
             android:text="@string/tv_age"
+            android:fontFamily="@font/jakartam"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ed_layout_name" />
 
@@ -89,7 +91,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingVertical="8dp"
-                android:background="@color/gray"
+                android:background="@drawable/rounded_background"
                 android:inputType="number"
                 tools:ignore="SpeakableTextPresentCheck" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -101,6 +103,7 @@
             android:layout_marginTop="24dp"
             android:textColor="@color/black"
             android:text="@string/tv_gender"
+            android:fontFamily="@font/jakartam"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ed_layout_age" />
 
@@ -119,7 +122,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingVertical="8dp"
-                android:background="@color/gray"
+                android:background="@drawable/rounded_background"
                 android:inputType="text"
                 tools:ignore="SpeakableTextPresentCheck" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -127,12 +130,13 @@
         <Button
             android:id="@+id/btn_save"
             android:layout_width="0dp"
-            android:layout_height="64dp"
+            android:layout_height="48dp"
             android:layout_marginTop="32dp"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
             android:text="@string/btn_save"
-            android:backgroundTint="@color/pink"
+            android:fontFamily="@font/jakartasb"
+            android:background="@drawable/rounded_background"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ed_layout_gender"

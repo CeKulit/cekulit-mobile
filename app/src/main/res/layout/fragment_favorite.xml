@@ -18,6 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/tv_fav_empty"
+            android:fontFamily="@font/jakartar"
             android:textSize="16sp"
             android:gravity="center"
             android:visibility="gone"

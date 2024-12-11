@@ -28,6 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/title_login"
+            android:fontFamily="@font/jakartaeb"
             android:textColor="@color/pink"
             android:textSize="36sp"
             android:textStyle="bold"
@@ -41,6 +42,7 @@
             android:id="@+id/tv_title_sub_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/jakartam"
             android:text="@string/title_sub_login"
             android:textColor="@color/pink"
             android:textSize="20sp"
@@ -55,6 +57,7 @@
             android:layout_marginTop="24dp"
             android:textColor="@color/black"
             android:text="@string/tv_email"
+            android:fontFamily="@font/jakartam"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_title_sub_login" />
 
@@ -85,6 +88,7 @@
             android:layout_marginTop="8dp"
             android:textColor="@color/black"
             android:text="@string/tv_password"
+            android:fontFamily="@font/jakartam"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ed_layout_email" />
 
@@ -114,6 +118,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/tv_forgot_password"
+            android:fontFamily="@font/jakartar"
             android:textColor="@color/pink"
             app:layout_constraintTop_toBottomOf="@id/ed_layout_password"
             app:layout_constraintEnd_toEndOf="@id/ed_layout_password"
@@ -123,11 +128,12 @@
         <Button
             android:id="@+id/btn_login"
             android:layout_width="0dp"
-            android:layout_height="64dp"
+            android:layout_height="48dp"
             android:layout_marginTop="32dp"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
             android:text="@string/btn_login"
+            android:background="@drawable/rounded_background"
             android:backgroundTint="@color/pink"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -154,6 +160,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginVertical="10dp"
                 android:text="@string/desc_login"
+                android:fontFamily="@font/jakartar"
                 android:textColor="@color/black"/>
 
             <TextView
@@ -163,8 +170,8 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginVertical="10dp"
+                android:fontFamily="@font/jakartar"
                 android:text="@string/desc_login_here"
-
                 android:textColor="@color/pink"/>
         </LinearLayout>
 
