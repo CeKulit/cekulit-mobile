@@ -5,22 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
+    android:padding="8dp"
     app:cardCornerRadius="12dp"
     app:cardElevation="4dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
 
         <ImageView
             android:id="@+id/iv_photo_skincare"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/moisturizer"
-            />
+            android:src="@drawable/moisturizer" />
 
         <TextView
             android:id="@+id/tv_brand_skincare"
@@ -28,6 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:paddingHorizontal="16dp"
+            android:fontFamily="@font/jakartab"
             android:textColor="@android:color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -39,7 +39,58 @@
             android:layout_marginTop="4dp"
             android:paddingHorizontal="16dp"
             android:paddingBottom="8dp"
+            android:fontFamily="@font/jakartasb"
             android:textColor="@android:color/darker_gray"
             android:textSize="14sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="16dp"
+            android:layout_marginBottom="12dp"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/baseline_star_rate_24" />
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/baseline_star_rate_24" />
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/baseline_star_rate_24" />
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/baseline_star_rate_24" />
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/baseline_star_rate_24" />
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/baseline_favorite_24"
+                android:tint="@color/pink" />
+        </LinearLayout>
+
     </LinearLayout>
+
 </androidx.cardview.widget.CardView>
