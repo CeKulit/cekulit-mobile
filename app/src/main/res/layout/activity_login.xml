@@ -76,7 +76,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingVertical="8dp"
-                android:background="@color/gray"
+                android:background="@drawable/rounded_background"
+                android:fontFamily="@font/jakartar"
                 android:inputType="textEmailAddress"
                 tools:ignore="SpeakableTextPresentCheck" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -107,9 +108,10 @@
                 android:id="@+id/ed_login_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/gray"
+                android:background="@drawable/rounded_background"
                 android:paddingVertical="8dp"
                 android:inputType="textPassword"
+                android:fontFamily="@font/jakartar"
                 tools:ignore="SpeakableTextPresentCheck" />
         </com.google.android.material.textfield.TextInputLayout>
 

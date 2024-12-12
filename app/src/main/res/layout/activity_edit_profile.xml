@@ -59,6 +59,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingVertical="8dp"
+                android:fontFamily="@font/jakartar"
                 android:background="@drawable/rounded_background"
                 android:inputType="text"
                 tools:ignore="SpeakableTextPresentCheck" />
@@ -93,6 +94,7 @@
                 android:paddingVertical="8dp"
                 android:background="@drawable/rounded_background"
                 android:inputType="number"
+                android:fontFamily="@font/jakartar"
                 tools:ignore="SpeakableTextPresentCheck" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -124,6 +126,7 @@
                 android:paddingVertical="8dp"
                 android:background="@drawable/rounded_background"
                 android:inputType="text"
+                android:fontFamily="@font/jakartar"
                 tools:ignore="SpeakableTextPresentCheck" />
         </com.google.android.material.textfield.TextInputLayout>
 

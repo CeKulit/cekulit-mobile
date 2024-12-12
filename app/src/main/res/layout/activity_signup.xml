@@ -78,6 +78,7 @@
                 android:paddingVertical="8dp"
                 android:background="@drawable/rounded_background"
                 android:inputType="text"
+                android:fontFamily="@font/jakartar"
                 tools:ignore="SpeakableTextPresentCheck" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -109,6 +110,7 @@
                 android:paddingVertical="8dp"
                 android:background="@drawable/rounded_background"
                 android:inputType="textEmailAddress"
+                android:fontFamily="@font/jakartar"
                 tools:ignore="SpeakableTextPresentCheck" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -141,6 +143,7 @@
                 android:background="@drawable/rounded_background"
                 android:paddingVertical="8dp"
                 android:inputType="textPassword"
+                android:fontFamily="@font/jakartar"
                 tools:ignore="SpeakableTextPresentCheck" />
         </com.google.android.material.textfield.TextInputLayout>
 
