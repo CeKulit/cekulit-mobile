@@ -24,7 +24,7 @@ class ResetPasswordViewModel: ViewModel() {
         viewModelScope.launch {
             _isLoading.value = true
             try {
-                val response = ApiConfig.getApiService(":3000").resetPassword(email, newPassword)
+                val response = ApiConfig.getApiService().resetPassword(email, newPassword)
                 _isLoading.value = false
                 _isSuccess.value = response
 

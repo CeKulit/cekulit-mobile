@@ -24,7 +24,7 @@ class DetailSkincareViewModel: ViewModel() {
         viewModelScope.launch {
             _isLoading.value = true
             try {
-                val response = ApiConfig.getApiService(":3000").getDetailSkincare(type, time)
+                val response = ApiConfig.getApiService().getDetailSkincare(type, time)
                 _isLoading.value = false
 
                 _skincare.value = response.toMap()

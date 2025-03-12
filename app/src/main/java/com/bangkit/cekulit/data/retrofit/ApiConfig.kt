@@ -8,14 +8,14 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class ApiConfig {
     companion object{
-        fun getApiService(port: String): ApiService {
+        fun getApiService(): ApiService {
             val loggingInterceptor = if(BuildConfig.DEBUG) { HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY) }
             else { HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.NONE) }
             val client = OkHttpClient.Builder()
                 .addInterceptor(loggingInterceptor)
                 .build()
             val retrofit = Retrofit.Builder()
-                .baseUrl("http://34.101.180.177${port}/")
+                .baseUrl("https://cekulit.publicvm.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build()

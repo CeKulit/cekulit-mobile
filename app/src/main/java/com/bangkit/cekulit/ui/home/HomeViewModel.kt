@@ -43,7 +43,7 @@ class HomeViewModel(private val authRepository: AuthRepository) : ViewModel() {
         _isLoading.value = true
         viewModelScope.launch {
             try {
-                val response = ApiConfig.getApiService(":3000").getProducts("Bearer ${authToken.value}", query = query)
+                val response = ApiConfig.getApiService().getProducts("Bearer ${authToken.value}", query = query)
                 _isLoading.value = false
 
                 _product.value = response
@@ -69,7 +69,7 @@ class HomeViewModel(private val authRepository: AuthRepository) : ViewModel() {
     fun getProfile(){
         viewModelScope.launch {
             try {
-                val response = ApiConfig.getApiService(":3000").getProfile("Bearer ${authToken.value!!}")
+                val response = ApiConfig.getApiService().getProfile("Bearer ${authToken.value!!}")
                 Log.e("PROFILE", "$response" )
                 _profile.value = response
             }

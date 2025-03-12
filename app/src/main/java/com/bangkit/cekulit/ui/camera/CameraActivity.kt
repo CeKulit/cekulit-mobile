@@ -219,7 +219,7 @@ class CameraActivity : AppCompatActivity() {
 
             lifecycleScope.launch {
                 try {
-                    val apiService = ApiConfig.getApiService(":5000")
+                    val apiService = ApiConfig.getApiService()
                     val successResponse = apiService.uploadImage(multipartBody)
                     with(successResponse.data) {
                         val intent = Intent(this@CameraActivity, ResultActivity::class.java)

@@ -40,7 +40,7 @@ class LoginViewModel(private val repository: AuthRepository) : ViewModel() {
         viewModelScope.launch {
             _isLoading.value = true
             try {
-                val response = ApiConfig.getApiService(":3000").login(email, password)
+                val response = ApiConfig.getApiService().login(email, password)
                 _isLoading.value = false
 
                 _userLogin.value = response

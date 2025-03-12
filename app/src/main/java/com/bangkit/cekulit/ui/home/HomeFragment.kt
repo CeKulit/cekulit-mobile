@@ -61,11 +61,12 @@ class HomeFragment : Fragment() {
                     requireActivity().intent.putExtra(NAME_USER, it.name)
                     binding.tvTitleSubHomepage.text = it.name
                 }
-            } else {
-                val intent = Intent(requireContext(), LoginActivity::class.java)
-                startActivity(intent)
-                requireActivity().finish()
             }
+//            else {
+//                val intent = Intent(requireContext(), LoginActivity::class.java)
+//                startActivity(intent)
+//                requireActivity().finish()
+//            }
         }
 
         homeViewModel.product.observe(viewLifecycleOwner){

@@ -24,7 +24,7 @@ class ForgetPasswordViewModel: ViewModel() {
         viewModelScope.launch {
             _isLoading.value = true
             try {
-                val response = ApiConfig.getApiService(":3000").forgetPassword(email)
+                val response = ApiConfig.getApiService().forgetPassword(email)
                 _isLoading.value = false
                 _isSuccess.value = response
 

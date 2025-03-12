@@ -35,7 +35,7 @@ class SkincareViewModel(private val authRepository: AuthRepository) : ViewModel(
         viewModelScope.launch {
             _isLoading.value = true
             try {
-                val response = ApiConfig.getApiService(":3000").getListDaySkincare()
+                val response = ApiConfig.getApiService().getListDaySkincare()
                 _isLoading.value = false
                 _day.value = "day"
                 _daySkincare.value = response
@@ -56,7 +56,7 @@ class SkincareViewModel(private val authRepository: AuthRepository) : ViewModel(
         viewModelScope.launch {
             _isLoading.value = true
             try {
-                val response = ApiConfig.getApiService(":3000").getListNightSkincare()
+                val response = ApiConfig.getApiService().getListNightSkincare()
                 _isLoading.value = false
                 _night.value = "night"
                 _nightSkincare.value = response

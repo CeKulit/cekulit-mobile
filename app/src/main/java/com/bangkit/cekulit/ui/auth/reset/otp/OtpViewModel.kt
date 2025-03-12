@@ -24,7 +24,7 @@ class OtpViewModel: ViewModel() {
         viewModelScope.launch {
             _isLoading.value = true
             try {
-                val response = ApiConfig.getApiService(":3000").otp(email, otp)
+                val response = ApiConfig.getApiService().otp(email, otp)
                 _isLoading.value = false
                 _isSuccess.value = response
 

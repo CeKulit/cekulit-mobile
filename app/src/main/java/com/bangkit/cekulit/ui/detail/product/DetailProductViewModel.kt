@@ -28,7 +28,7 @@ class DetailProductViewModel(private val authRepository: AuthRepository, private
         viewModelScope.launch {
             _isLoading.value = true
             try {
-                val response = ApiConfig.getApiService(":4000").getDetailProduct("Bearer ${authToken.value!!}", desc)
+                val response = ApiConfig.getApiService().getDetailProduct("Bearer ${authToken.value!!}", desc)
                 _isLoading.value = false
 
                 _products.value = response

@@ -33,7 +33,7 @@ class EditProfileViewModel(private val repository: AuthRepository) : ViewModel()
         viewModelScope.launch {
             _isLoading.value = true
             try {
-                val response = ApiConfig.getApiService(":3000").editProfile("Bearer ${authToken.value}", name, age, gender)
+                val response = ApiConfig.getApiService().editProfile("Bearer ${authToken.value}", name, age, gender)
                 _isLoading.value = false
 
                 _editProfile.value = response
